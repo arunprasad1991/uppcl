@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="TestPagePageDef"
+                Package="com.xx.uppcl.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="ServiceRequestsTF1"
+              taskFlowId="/WEB-INF/taskFlows/serviceRequest/ServiceRequestsTF.xml#ServiceRequestsTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="correctionType" value="NameCorrection"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="BillDeskTF1" taskFlowId="/WEB-INF/taskFlows/payment/BillDeskTF.xml#BillDeskTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="ServiceRequestStatusTF1"
+              taskFlowId="/WEB-INF/taskFlows/serviceRequest/ServiceRequestStatusTF.xml#ServiceRequestStatusTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="OnlineLoadExtensionTF1" taskFlowId="/WEB-INF/OnlineLoadExtensionTF.xml#OnlineLoadExtensionTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="MyAccountTF1" taskFlowId="/WEB-INF/MyAccountTF.xml#MyAccountTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

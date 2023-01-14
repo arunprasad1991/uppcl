@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1">
+        <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                    <h7 class="text-shadow">
+                        <?audit suppress oracle.ide.xml.validation-error?>
+                        Feedback
+                    </h7>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding grey-background d-block" id="feedback">
+        <af:panelGroupLayout styleClass="feedback-outer d-block smart-forms smart-container wrap-3" id="pgl30" partialTriggers="b1">
+            <af:panelGroupLayout id="pgl2" styleClass="section d-block text-center">
+                <af:outputText value="Feedback" id="ot1" styleClass="dark-blue login-header site_wrapper"/>
+            </af:panelGroupLayout>
+            
+            <af:panelGroupLayout id="pgl3" styleClass="d-block mt-4 relative">
+                <i class="fa fa-user fieldicon"></i>
+                <af:inputText id="it1" placeholder="Your Name/Organisation" value="#{pageFlowScope.FeedbackForm.name}"
+                              simple="true" autoSubmit="true" styleClass="#{pageFlowScope.nameErrMsg ne null ? 'mandate' : ''}"/>
+                <af:outputText value="#{pageFlowScope.nameErrMsg}" id="ot17"
+                                   rendered="#{pageFlowScope.nameErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl5" styleClass="d-block mt-4 relative">
+                <i class="fa fa-user fieldicon"></i>
+                <af:inputText id="it2" placeholder="Account No" value="#{pageFlowScope.FeedbackForm.account}"
+                              simple="true" autoSubmit="true" styleClass="#{pageFlowScope.actNumErrMsg ne null ? 'mandate' : ''}"/>
+                <af:outputText value="#{pageFlowScope.actNumErrMsg}" id="ot2"
+                                   rendered="#{pageFlowScope.actNumErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl6" styleClass="d-block mt-4 relative">
+                <i class="fa fa-user fieldicon"></i>
+                <af:inputText id="it3" placeholder="Service Connection No." styleClass="#{pageFlowScope.servConnErrMsg ne null ? 'mandate' : ''}"
+                              value="#{pageFlowScope.FeedbackForm.connection}" simple="true" autoSubmit="true"/>
+                <af:outputText value="#{pageFlowScope.servConnErrMsg}" id="ot3"
+                                   rendered="#{pageFlowScope.servConnErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl7" styleClass="d-block mt-4 relative">
+            <section id="combobox">
+                <i class="fa fa-user fieldicon"></i>
+                
+                <af:selectOneChoice unselectedLabel="Select Discom" value="#{pageFlowScope.FeedbackForm.discom}" simple="true" id="soc2" autoSubmit="true"
+                                    styleClass="#{pageFlowScope.discomErrMsg ne null ? 'mandate' : ''}">
+                    <f:selectItems value="#{pageFlowScope.FeedbackForm.discomList}" id="si2"/>
+                </af:selectOneChoice>
+                <af:outputText value="#{pageFlowScope.discomErrMsg}" id="ot4"
+                                   rendered="#{pageFlowScope.discomErrMsg ne null}"
+                                   styleClass="error"/>
+                </section>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl8" styleClass="d-block mt-4 relative">
+            <i class="fa fa-envelope fieldicon"></i>
+                <af:inputText id="it5" placeholder="Email Address" value="#{pageFlowScope.FeedbackForm.email}"
+                              simple="true" autoSubmit="true" styleClass="#{pageFlowScope.emailErrMsg ne null ? 'mandate' : ''}">
+                    <!--<af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,4}"
+                                       messageDetailNoMatch='"The value {1} is not a valid email address: "'/>-->
+                </af:inputText>
+                <af:outputText value="#{pageFlowScope.emailErrMsg}" id="ot5"
+                                   rendered="#{pageFlowScope.emailErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl9" styleClass="d-block mt-4 relative">
+                <i class="fa fa-phone-square fieldicon"></i>
+                 <af:inputText id="it6" placeholder="Telephone" value="#{pageFlowScope.FeedbackForm.telephone}"
+                              simple="true" autoSubmit="true" styleClass="#{pageFlowScope.phoneErrMsg ne null ? 'mandate' : ''}">
+                    <!--<af:validateRegExp pattern="([0-9\\\\\\\\\\\\\\\\-\\\\\\\\\\\\\\\\+\\\\\\\\\\\\\\\\(\\\\\\\\\\\\\\\\)]+)"
+                                       messageDetailNoMatch="Value must be a valid phone number"
+                                       hint="Enter a valid phone number."/>-->
+                </af:inputText>
+                <af:outputText value="#{pageFlowScope.phoneErrMsg}" id="ot6"
+                                   rendered="#{pageFlowScope.phoneErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl10" styleClass="d-block mt-4 relative">
+                 <i class="fas fa-map-marker-alt fieldicon"></i>
+                <af:inputText id="it7" placeholder="Address" value="#{pageFlowScope.FeedbackForm.address}"
+                              simple="true" autoSubmit="true" styleClass="#{pageFlowScope.addrErrMsg ne null ? 'mandate' : ''}"/>
+                <af:outputText value="#{pageFlowScope.addrErrMsg}" id="ot7"
+                                   rendered="#{pageFlowScope.addrErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl11" styleClass="d-block mt-4 relative">
+            <i class="far fa-building fieldicon"></i>
+                <af:inputText id="it8" placeholder="City" value="#{pageFlowScope.FeedbackForm.city}" simple="true" autoSubmit="true"
+                              styleClass="#{pageFlowScope.cityErrMsg ne null ? 'mandate' : ''}"/>
+                <af:outputText value="#{pageFlowScope.cityErrMsg}" id="ot12"
+                                   rendered="#{pageFlowScope.cityErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+             <af:panelGroupLayout id="pgl12" styleClass="d-block mt-4 relative">
+             <i class="fas fa-university fieldicon"></i>
+                <af:inputText id="it9" placeholder="State" value="#{pageFlowScope.FeedbackForm.state}" simple="true" autoSubmit="true"
+                              styleClass="#{pageFlowScope.stateErrMsg ne null ? 'mandate' : ''}"/>
+                <af:outputText value="#{pageFlowScope.stateErrMsg}" id="ot9"
+                                   rendered="#{pageFlowScope.stateErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl14" styleClass="d-block mt-4 relative">
+            <i class="fas fa-map fieldicon"></i>
+                <af:inputText id="it10" placeholder="Zip/Pin" value="#{pageFlowScope.FeedbackForm.zip}" simple="true" autoSubmit="true"
+                              styleClass="#{pageFlowScope.pinErrMsg ne null ? 'mandate' : ''}"/>
+                <af:outputText value="#{pageFlowScope.pinErrMsg}" id="ot10"
+                                   rendered="#{pageFlowScope.pinErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl15" styleClass="d-block mt-4 relative">
+            <i class="fa fa-comments fieldicon"></i>
+                <af:inputText id="it11" placeholder="Comments" rows="5" value="#{pageFlowScope.FeedbackForm.comments}"
+                              maximumLength="300" simple="true" autoSubmit="true" styleClass="#{pageFlowScope.commentsErrMsg ne null ? 'mandate' : ''}"/>
+                <af:outputText value="#{pageFlowScope.FeedbackForm.findLabel('ENTER_80_TO_300_TEXT')}" id="ot8" styleClass="dark-grey font11 d-block"/>
+                
+                <af:outputText value="#{pageFlowScope.commentsErrMsg}" id="ot11"
+                                   rendered="#{pageFlowScope.commentsErrMsg ne null}"
+                                   styleClass="error"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl4" styleClass="d-block mt-4 ">
+                <af:button text="Submit" id="b1" styleClass="button btn-primary" action="#{pageFlowScope.FeedbackForm.onClickSubmit}"/>
+            </af:panelGroupLayout>
+            
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="immediate"
+                          binding="#{pageFlowScope.FeedbackForm.messagePopupBind}">
+                    <af:dialog id="d1" title="Information" type="none" contentWidth="420" styleClass="dialog ">
+                        <af:panelGroupLayout id="pgl17" styleClass="col-md-12 col-xs-12 smart-forms dialogcontent-top-box">
+                            <af:panelGroupLayout id="pgl18" styleClass="col-md-12 col-xs-12 pl-0 mb-4 mt-4">
+                                <af:panelGroupLayout id="pgl19">
+                                    <af:outputFormatted value="#{pageFlowScope.successMsg}" id="of1"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl20" styleClass="mt-4">
+                                <af:button text="OK" id="b3" styleClass="button btn-primary mt-4"
+                                           actionListener="#{pageFlowScope.FeedbackForm.closeMessagePopup}"
+                                           partialSubmit="true"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+            </af:panelGroupLayout>
+        </section>
+    </af:panelGroupLayout>
+</jsp:root>

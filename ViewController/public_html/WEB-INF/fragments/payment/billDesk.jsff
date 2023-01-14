@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1">
+        <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout id="pgl83" styleClass="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            Pay Bill
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl93" styleClass="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                    <div class="account-user-text">
+                        <af:outputText value="Welcome : " id="ot2" inlineStyle="color: orange !important;"
+                                       styleClass="d-inline-block fontsize20"/>
+                         
+                        <af:outputText value="#{sessionScope.loggedInUserName}" id="ot18"
+                                       inlineStyle="color: White !important;"
+                                       styleClass="white d-inline-block fontsize22 pl-4"/>
+                         
+                        <br/>
+                         
+                        <af:outputText value="Last Login  : " styleClass="d-inline-block" id="ot1"/>
+                         
+                        <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="pl-4 white d-inline-block" id="ot6"/>
+                    </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="accinfo">
+            <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back" id="pgl23">
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-block static wrap-3 pl-0 grey-background"
+                                     id="pgl30">
+                    <af:panelGroupLayout id="pgl7" styleClass="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                        <af:panelGroupLayout id="pgl25" styleClass="d-block mt-4 relative fontsize20 mb-2">
+                            <af:outputText value="Pay Your Fee Here" styleClass="bold" id="ot9"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 font14" id="pgl26">
+                    <af:panelGroupLayout id="pgl11">
+                        <af:panelGroupLayout id="pgl21" styleClass="col-lg-12 col-md-12 col-xs-12">
+                            <af:panelGroupLayout id="pgl8" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl29" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.billDeskBean.findLabel('NAME')}" styleClass="bold" id="ot5"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl31" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountDetails.name}" id="ot13"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl9" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl17" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.billDeskBean.findLabel('BD_ACC_NO_LABEL')}" styleClass="bold" id="ot10"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl18" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountDetails.accountNo}" id="ot14"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl10" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl20" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.billDeskBean.findLabel('BD_CHARGES_LABEL')}" styleClass="bold" id="ot11"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl22" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="&#8377;#{pageFlowScope.paymentDetails.charges1 != null ? pageFlowScope.paymentDetails.charges1 : '0.0'}" id="ot15"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="catChangeReq">
+            <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back mb-2 billdesk"
+                                 id="pgl6">
+                <af:panelGroupLayout id="pgl32" styleClass="smart-forms smart-container">
+                    <af:panelGroupLayout id="pgl2" styleClass="section d-block" partialTriggers="b1">
+                        <af:selectBooleanCheckbox text="#{backingBeanScope.billDeskBean.findLabel('BD_POWERED_BY_LABEL')}" label="Label 1" id="sbc1"
+                                                  styleClass="#{pageFlowScope.acceptTermsErrMsg ne null ? 'mandate otpcheckbox' : 'otpcheckbox'}"
+                                                  autoSubmit="true" value="#{pageFlowScope.checked}" simple="true"/>
+                        <af:outputText value="#{pageFlowScope.acceptTermsErrMsg}" id="ot8"
+                                       rendered="#{pageFlowScope.acceptTermsErrMsg ne null}"
+                                       styleClass="error d-block mt-2"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl5" styleClass="d-block mt-4 relative">
+                        <af:image source="http://10.0.0.192/images/billdesk.png" id="i1" styleClass="img-responsive"
+                                  shortDesc="bill desk"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl15" styleClass="d-block mt-4 relative fontsize22">
+                        <af:outputText value="#{backingBeanScope.billDeskBean.findLabel('BD_NOTES_HEAD')}" styleClass="bold" id="ot4"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl3" styleClass="d-block mt-4 relative fontsize20">
+                        <ul>
+                            <li>Credit / Debit Cards of all banks are accepted here.</li>
+                            <li class="mt-2">UPPCL online payment helpdesk email id payment.uppcl@billdesk.com</li>
+                            <li class="mt-2">Please do not press back or refresh button. Do not close this window.</li>
+                            <li class="mt-2">If payment receipt is not generated / error page displayed.</li>
+                            <li class="mt-2">If the bill amount is debited from your Bank Account but error page
+                                             displayed. your payment will be credited into your bill in three working
+                                             days after receiving the confirmation from your bank. Also an email would
+                                             be send related to confirmation to your registered mail id</li>
+                            <li class="mt-2">You can report such occurrence to discom mailid</li>
+                        </ul>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl19" styleClass="d-block mt-4 relative fontsize16">
+                        <af:outputText value="If Re-trying" styleClass="bold" id="ot12"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl12" styleClass="d-block mt-4 relative fontsize16">
+                        <ul>
+                            <li>Please first check whether your bank account is already debited with the amount of
+                                earlier transaction</li>
+                            <li class="mt-2">If debited please do not pay again. There is no Refund or Cancellation of
+                                             Payment. Excess payment would be considered in next bill</li>
+                        </ul>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl14" styleClass="d-block mt-4 relative fontsize16">
+                        <af:outputText value="Convenience Charge /Service Tax" styleClass="bold" id="ot7"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl16" styleClass="d-block mt-4 relative error fontsize16">
+                        <ul>
+                            <li style="color:Red;">ALL PAYMENTS THROUGH Net Banking / E-Wallet / BHIM / UPI ARE FREE OF
+                                                   ANY CHARGE.</li>
+                            <li style="color:Red;" class="mt-2">ALL PAYMENTS THROUGH CREDIT CARD / DEBIT CARD, UPTO Bill
+                                                                Amount 4000, ARE FREE OF Transaction CHARGE to the
+                                                                consumer.</li>
+                            <li style="color:Red;" class="mt-2">Payments done through Debit Cards(Other than RUPAY DEBIT
+                                                                CARDS) for bill amounts greater than 4000, transaction
+                                                                charges at the rate of 0.90% of bill amount + GST are
+                                                                applicable.</li>
+                            <li style="color:Red;" class="mt-2">Payments done through Credit Cards for bill amounts
+                                                                greater than 4000, transaction charges at the rate of
+                                                                1.00% of bill amount + GST are applicable.</li>
+                        </ul>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl4" styleClass="col-md-12 col-xs-12 d-block mt-4 pl-0 mb-4">
+                        <af:panelGroupLayout id="pgl34" styleClass="col-md-12 col-xs-6 pl-0 text-center">
+                            <af:button text="#{backingBeanScope.billDeskBean.findLabel('PAY_NOW')}" id="b1" styleClass="button btn-primary"
+                                       />
+                                      <!-- action="#{backingBeanScope.billDeskBean.initiatePayments}"/>-->
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:outputText value="#{pageFlowScope.intPaymentValidErrMsg}" id="ot17"
+                                   rendered="#{pageFlowScope.intPaymentValidErrMsg ne null}" styleClass="error"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+    </af:panelGroupLayout>
+</jsp:root>

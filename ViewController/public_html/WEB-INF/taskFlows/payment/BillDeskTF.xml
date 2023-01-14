@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="BillDeskTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>fetchPrices</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__2">
+      <name>accountDetails</name>
+      <value>#{pageFlowScope.accountDetails}</value>
+      <class>com.xx.uppcl.pojo.Account</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name>serviceReqDetails</name>
+      <value>#{pageFlowScope.serviceReqDetails}</value>
+      <class>com.xx.uppcl.pojo.ServiceRequestPojo</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>paymentFor</name>
+      <value>#{pageFlowScope.paymentFor}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__6">
+      <name>charges</name>
+      <value>#{pageFlowScope.charges}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__7">
+      <name>remarks</name>
+      <value>#{pageFlowScope.comments}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__5">
+      <managed-bean-name>billDeskBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.payment.BillDeskBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="fetchPrices">
+      <method>#{backingBeanScope.billDeskBean.fetchPrices}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="billDesk">
+      <page>/WEB-INF/fragments/payment/billDesk.jsff</page>
+    </view>
+    <view id="genericConfirmation">
+      <page>/WEB-INF/fragments/genericConfirmation.jsff</page>
+    </view>
+    <control-flow-rule id="__8">
+      <from-activity-id>fetchPrices</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>toBillDesk</from-outcome>
+        <to-activity-id>billDesk</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__1">
+        <from-outcome>toMessage</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

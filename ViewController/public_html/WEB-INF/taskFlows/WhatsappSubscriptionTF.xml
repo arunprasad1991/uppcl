@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="WhatsappSubscriptionTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>AccountDetailsOnLoadTF</default-activity>
+    <managed-bean id="__1">
+      <managed-bean-name>whatsAppSubscriptionBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.WhatsAppSubscriptionBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <task-flow-call id="AccountDetailsOnLoadTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/common/AccountDetailsOnLoadTF.xml</document>
+        <id>AccountDetailsOnLoadTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="whatsappSubscription">
+      <page>/WEB-INF/fragments/whatsappSubscription/whatsappSubscription.jsff</page>
+    </view>
+    <method-call id="initSubscription">
+      <method>#{backingBeanScope.whatsAppSubscriptionBean.iniitSubscription}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="genericConfirmation">
+      <page>/WEB-INF/fragments/genericConfirmation.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>AccountDetailsOnLoadTF</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>initSubscription</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>initSubscription</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>toWhataAppSubs</from-outcome>
+        <to-activity-id>whatsappSubscription</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>whatsappSubscription</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>toMessage</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

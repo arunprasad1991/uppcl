@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="AccountDetailsOnLoadTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>getAccountListAndDetails</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>accountDetailsOnLoadBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.AccountDetailsOnLoadBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="getAccountListAndDetails">
+      <method>#{backingBeanScope.accountDetailsOnLoadBean.getAccountListandDetails}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <task-flow-return id="continue">
+      <outcome>
+        <name>continue</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__2">
+      <from-activity-id>getAccountListAndDetails</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>continue</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

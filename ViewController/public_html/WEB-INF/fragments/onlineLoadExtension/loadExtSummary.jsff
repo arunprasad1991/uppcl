@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1">
+        <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout id="pgl83" styleClass="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            Online Load Extension
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl93" styleClass="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                            <div class="account-user-text">
+                                <af:outputText value="Welcome : " id="ot2" inlineStyle="color: orange !important;"  styleClass="d-inline-block fontsize20"/>
+                                <af:outputText value="#{sessionScope.loggedInUserName}" id="ot18" inlineStyle="color: White !important;"  styleClass="white d-inline-block fontsize22 pl-4"/>
+                                <br/>
+                                <af:outputText value="Last Login  : " styleClass="d-inline-block" id="ot1"/>
+                                <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="pl-4 white d-inline-block" id="ot6"/>
+                                
+                            </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        
+        <section class="middle_outer sec-padding d-block" id="accinfo">
+            <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back mb-2" id="pgl30">
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-block static wrap-3 pl-0 grey-background"
+                                     id="pgl2">
+                    <af:panelGroupLayout id="pgl7" styleClass="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                        <af:panelGroupLayout id="pgl25" styleClass="d-block mt-4 relative fontsize20 mb-2">
+                            <af:outputText value="#{backingBeanScope.onlineLoadExtBean.findLabel('CONFIRMATION')}" styleClass="bold" id="ot9"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 font14" id="pgl31">
+                    <af:panelGroupLayout id="pgl11">
+                        <af:panelGroupLayout id="pgl21" styleClass="col-lg-12 col-md-12 col-xs-12">
+                            <af:panelGroupLayout id="pgl8" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl29" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.onlineLoadExtBean.findLabel('NAME')}" styleClass="bold" id="ot3"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl47" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.name}" id="ot13"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl9" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl12" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.onlineLoadExtBean.findLabel('SUPPLY_TYPE')}" styleClass="bold" id="ot10"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl14" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.supplyType}" id="ot14"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl10" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl15" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.onlineLoadExtBean.findLabel('OLE_OLD_LOAD')}" styleClass="bold" id="ot11"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl16" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.currentLoad}" id="ot15"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout id="pgl5" styleClass="col-lg-12 col-md-12 col-xs- mt-4">
+                            <af:panelGroupLayout id="pgl23" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl6" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.onlineLoadExtBean.findLabel('OLE_NEW_LOAD')}" styleClass="bold" id="ot4"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl17" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.selectedNewLoad} KW" id="ot20"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl24" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl18" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.onlineLoadExtBean.findLabel('OLE_LOAD_EXT_CHARGES_LABEL')}" styleClass="bold" id="ot5"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl19" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.loadExtCharges} KW" id="ot19"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl3" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl20" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.onlineLoadExtBean.findLabel('OLE_SECURITY_FEE_LABEL')}" styleClass="bold" id="ot12"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl22" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.securityFees}" id="ot16"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout id="pgl4" styleClass="col-md-12 col-xs-12 d-block mt-4 pl-0 smart-forms smart-container mb-4">
+                            <af:panelGroupLayout id="pgl34" styleClass="mt-4 pl-0">
+                                <af:button text="#{backingBeanScope.onlineLoadExtBean.findLabel('OLE_CONFIRM')}" id="b1" styleClass="button btn-primary"
+                                           action="#{backingBeanScope.onlineLoadExtBean.submitOnlineLoadExtension}"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl33" styleClass="ml-4 mt-4 ">
+                                <af:button text="#{backingBeanScope.onlineLoadExtBean.findLabel('BACK')}" id="b2" styleClass="button btn-primary"
+                                           action="backToBasicInfo"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+    </af:panelGroupLayout>
+</jsp:root>

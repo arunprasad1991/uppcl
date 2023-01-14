@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:panelGroupLayout id="pgl1">
+        <af:panelGroupLayout id="pgl6" styleClass="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+            <af:forEach items="#{pageFlowScope.myAccountBean.billDetailsList}" var="row" varStatus="vs">
+                <af:panelGroupLayout id="pgl2" styleClass="col-lg-4 col-md-4 col-xs-12 col-sm-12 ">
+                    <af:panelGroupLayout id="pgl4" styleClass="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <af:outputText value="Bill Summary" id="ot3" styleClass="fontsize20 bold"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl5" styleClass="col-lg-12 col-md-12 col-xs-12 col-sm-12 fontsize20 dark-grey">
+                        <af:outputText value="#{row.billMonthYear}" id="ot4"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl7" styleClass="col-lg-12 col-md-12 col-xs-12 col-sm-12 pt-2">
+                        <af:outputText value="Due Date On" id="ot6" styleClass="dark-grey fontsize16"/>
+                        <af:outputText value="#{row.billDueDate}" id="ot9" styleClass="dark-grey fontsize16 ml-2"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl3" styleClass="col-lg-8 col-md-8 col-xs-12 col-sm-12">
+                    <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl10">
+                        <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2" id="pgl11">
+                            <af:outputText value="Bill Number" id="ot2"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right" id="pgl8">
+                            <af:outputText value="#{row.billNo}" id="ot1"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl9">
+                        <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2" id="pgl12">
+                            <af:outputText value="Bill Amount" id="ot10"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right" id="pgl13">
+                            <af:outputText value="&#8377;#{row.billAmount}" id="ot16"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl14">
+                        <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2" id="pgl15">
+                            <af:outputText value="Bill Issued Date" id="ot18"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right" id="pgl16">
+                            <af:outputText value="#{row.billIssuedDate}" id="ot19"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl17">
+                        <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2" id="pgl18">
+                            <af:outputText value="Payment Made" id="ot20"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right" id="pgl19">
+                            <af:outputText value="&#8377;#{row.paymentMade}" id="ot21"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl20">
+                        <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2" id="pgl21">
+                            <af:outputText value="Payment Date" id="ot22"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right" id="pgl22">
+                            <af:outputText value="#{row.paymentDate}" id="ot23"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2 b-top" id="pgl24">
+                        <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2" id="pgl25">
+                            <af:outputText value="Total Amount Due" id="ot25" styleClass="bold"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right" id="pgl26">
+                            <af:outputFormatted value="&#8377;#{row.totalPaymentDue}" styleClass="fontsize16 bold" id="ot26"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-6" id="pgl29" partialTriggers="b1">
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right mb-4" id="pgl30">
+                            <af:button text="Download Bill" id="b1" styleClass="button btn-primary white">
+                                 <af:setPropertyListener from="#{row.billNo}" to="#{pageFlowScope.billId}"
+                                                                    type="action"/>
+                                  <af:fileDownloadActionListener contentType="#{pageFlowScope.contentType}" filename="Bill.pdf"
+                                                                           method="#{pageFlowScope.myAccountBean.downloadBill}"/>
+                                  
+                                  
+                            </af:button>
+                            <af:outputText value="#{pageFlowScope.downloadBussValidErrMsg}" id="ot5"
+                                                   rendered="#{pageFlowScope.downloadBussValidErrMsg ne null}"
+                                                   styleClass="mt-1 error d-block"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right mb-4" id="pgl23">
+                             <af:button text="Pay Bill" id="b2" styleClass="button btn-primary white"
+                                        action="#{pageFlowScope.myAccountBean.toBillPayment}">
+                                <af:setPropertyListener from="#{row.totalPaymentDue}" to="#{pageFlowScope.chargesToPay}"
+                                                                    type="action"/>
+                            </af:button>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right mb-4" id="pgl28">
+                             <af:button text="Email Bill" id="b3" styleClass="button btn-primary white"
+                                        action="#{pageFlowScope.myAccountBean.emailBill}">
+                                <af:setPropertyListener from="#{row.billNo}" to="#{pageFlowScope.billId}"
+                                                                    type="action"/>
+                            </af:button>
+                            <af:outputText value="#{pageFlowScope.emailBillBussValidErrMsg}" id="ot7" partialTriggers="b3"
+                                                   rendered="#{pageFlowScope.emailBillBussValidErrMsg ne null}"
+                                                   styleClass="mt-1 error d-block"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl27" styleClass="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt-4 mb-4">
+                    <af:separator id="s1"/>
+                </af:panelGroupLayout>
+            </af:forEach>
+        </af:panelGroupLayout>
+         <af:popup autoCancel="disabled" id="editProfileImagePopup" contentDelivery="immediate"
+                  binding="#{pageFlowScope.myAccountBean.emailBillPopupBind}">
+            <af:dialog id="d1" title="Information" type="none" contentWidth="420" styleClass="dialog">
+                <af:panelGroupLayout id="pgl31" styleClass="col-md-12 col-xs-12 smart-forms dialogcontent-top-box">
+                    <af:panelGroupLayout id="pgl32" styleClass="col-md-12 col-xs-12 pl-0 mb-4 mt-4" partialTriggers="b3">
+                        <af:outputText value="#{pageFlowScope.myAccountBean.findLabel('BILL_EMAIL_SUCCESS_MSG')}" id="ot28"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl33" styleClass="mt-4">
+                        <af:button text="OK" id="b4" styleClass="button btn-primary mt-4"
+                                   actionListener="#{pageFlowScope.myAccountBean.closeEmailBillPoup}"
+                                   partialSubmit="true"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+    </af:panelGroupLayout>
+</jsp:root>

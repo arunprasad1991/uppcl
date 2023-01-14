@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SelfBillGenerationTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>AccountDetailsOnLoadTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__2">
+      <name>billType</name>
+      <value>#{pageFlowScope.billType}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>selfBillGenerationBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.SelfBillGenerationBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="getAccountListAndDetails">
+      <method>#{backingBeanScope.selfBillGenerationBean.getAccountListAndDetails}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="selfBillGenEligibilityDetails">
+      <page>/WEB-INF/fragments/selfBillGeneration/selfBillGenEligibilityDetails.jsff</page>
+    </view>
+    <view id="selfBillMeterGen">
+      <page>/WEB-INF/fragments/selfBillGeneration/selfBillMeterGen.jsff</page>
+    </view>
+    <view id="selfBillNetMeterGen">
+      <page>/WEB-INF/fragments/selfBillGeneration/selfBillNetMeterGen.jsff</page>
+    </view>
+    <view id="selfBillMessage">
+      <page>/WEB-INF/fragments/selfBillGeneration/selfBillMessage.jsff</page>
+    </view>
+    <view id="genericConfirmation">
+      <page>/WEB-INF/fragments/genericConfirmation.jsff</page>
+    </view>
+    <task-flow-call id="AccountDetailsOnLoadTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/common/AccountDetailsOnLoadTF.xml</document>
+        <id>AccountDetailsOnLoadTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>getAccountListAndDetails</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>selfBillGenEligibilityDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>selfBillGenEligibilityDetails</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>toMeterGeneration</from-outcome>
+        <to-activity-id>selfBillMeterGen</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>toNetMeterGeneration</from-outcome>
+        <to-activity-id>selfBillNetMeterGen</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>toMessage</from-outcome>
+        <to-activity-id>selfBillMessage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>selfBillMeterGen</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>toConfirm</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>selfBillNetMeterGen</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>toConfirm</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>AccountDetailsOnLoadTF</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>getAccountListAndDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1">
+        <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout id="pgl83" styleClass="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            Service Request Status
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl93" styleClass="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                    <div class="account-user-text">
+                        <af:outputText value="Welcome : " id="ot2" inlineStyle="color: orange !important;"  styleClass="d-inline-block fontsize20"/>
+                        <af:outputText value="#{sessionScope.loggedInUserName}" id="ot18"
+                                       inlineStyle="color: White !important;"  styleClass="white d-inline-block fontsize22 pl-4"/>
+                         
+                        <br/>
+                         
+                        <af:outputText value="Last Login  : " styleClass="d-inline-block" id="ot1"/>
+                         
+                        <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="pl-4 white d-inline-block" id="ot6"/>
+                    </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="accinfo">
+            <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back smart-forms static" id="pgl30">
+                <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-sm-6 col-xs-6 d-block  wrap-3 pl-0"
+                                     id="pgl25" partialTriggers="b1">
+                    <af:panelGroupLayout id="pgl7" styleClass="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                        <af:panelGroupLayout id="pgl26" styleClass="d-block mt-4 relative">
+                            <section id="combobox">
+                                <i class="fa fa-user fieldicon"></i>
+                                <af:selectOneChoice unselectedLabel="#{backingBeanScope.serviceRequestStatusBean.findLabel('SELECT_ACC_NO')}"
+                                                    value="#{pageFlowScope.accountNo}" simple="true" id="soc2"
+                                                    autoSubmit="true">
+                                    <f:selectItems value="#{pageFlowScope.accountsList}" id="si2"/>
+                                </af:selectOneChoice>
+                                <af:outputText value="#{pageFlowScope.actErrMsg}" id="ot27"
+                                               rendered="#{pageFlowScope.actErrMsg ne null}" styleClass="mt-1 error d-block"/>
+                            </section>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 font14" id="pgl31" partialTriggers="b1">
+                    <af:panelGroupLayout id="pgl11">
+                        <af:panelGroupLayout id="pgl21" styleClass="col-lg-12 col-md-12 col-xs-12 pl-0">
+                            <af:panelGroupLayout id="pgl8" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl29" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.serviceRequestStatusBean.findLabel('SRS_FROM_DATE_LABEL')}"
+                                                   styleClass="bold" id="ot9"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl5" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:inputDate label="" id="id1" simple="true" autoSubmit="true"
+                                                  value="#{pageFlowScope.fromDate}">
+                                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                    </af:inputDate>
+                                    <af:outputText value="#{pageFlowScope.fromDateErrMsg}" id="ot16"
+                                                   rendered="#{pageFlowScope.fromDateErrMsg ne null}"
+                                                   styleClass="mt-1 error d-block"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl9" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl10" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.serviceRequestStatusBean.findLabel('SRS_TO_DATE_LABEL')}"
+                                                   styleClass="bold" id="ot10"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl12" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:inputDate label="" id="id2" simple="true" autoSubmit="true"
+                                                  value="#{pageFlowScope.toDate}">
+                                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                    </af:inputDate>
+                                    <af:outputText value="#{pageFlowScope.toDateErrMsg}" id="ot3"
+                                                   rendered="#{pageFlowScope.toDateErrMsg ne null}"
+                                                   styleClass="mt-1 error d-block"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl20" styleClass="col-lg-3 col-md-3 col-xs-12 ml-4 mt-2">
+                                <af:button text="#{backingBeanScope.serviceRequestStatusBean.findLabel('SRS_VIEW_BTN_TEXT')}" id="b1" styleClass="button btn-primary mt-4"
+                                           action="#{backingBeanScope.serviceRequestStatusBean.getServiceReqStatus}"/>
+                                <!--<af:outputText value="#{pageFlowScope.srReqBussValidErrMsg}" id="ot4"
+                                       rendered="#{pageFlowScope.srReqBussValidErrMsg ne null}" styleClass="error"/>-->
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                 <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="immediate"
+                          binding="#{backingBeanScope.serviceRequestStatusBean.messagePopupBind}">
+                    <af:dialog id="d1" title="Information" type="none" contentWidth="420" styleClass="dialog ">
+                        <af:panelGroupLayout id="pgl2" styleClass="col-md-12 col-xs-12 smart-forms dialogcontent-top-box">
+                            <af:panelGroupLayout id="pgl3" styleClass="col-md-12 col-xs-12 pl-0 mb-4 mt-4">
+                                <af:panelGroupLayout id="pgl19">
+                                    <af:outputText value="#{pageFlowScope.srReqBussValidErrMsg}" id="ot21" styleClass="fontsize16"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl4" styleClass="mt-4">
+                                <af:button text="OK" id="b3" styleClass="button btn-primary mt-4"
+                                           actionListener="#{backingBeanScope.serviceRequestStatusBean.closeMessagePopup}"
+                                           partialSubmit="true"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="catChangeReq">
+            <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back mb-2"
+                                 id="pgl6" rendered="#{!pageFlowScope.isEligible}" partialTriggers="b1">
+                <af:panelGroupLayout styleClass="d-block mt-2"
+                                     id="pgl32" partialTriggers="b1">
+                    <table id="myTable" class="display datatable" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th><af:outputText value="#{backingBeanScope.serviceRequestStatusBean.findLabel('SRS_CASE_ID_TBL_HEAD')}" id="ot5"/></th>
+                                <th><af:outputText value="#{backingBeanScope.serviceRequestStatusBean.findLabel('SRS_CREAT_DATE_TBL_HEAD')}" id="ot12"/></th>
+                                <th><af:outputText value="#{backingBeanScope.serviceRequestStatusBean.findLabel('SRS_DESC_TBL_HEAD')}" id="ot13"/></th>
+                                <th><af:outputText value="#{backingBeanScope.serviceRequestStatusBean.findLabel('SRS_STATUS_TBL_HEAD')}" id="ot14"/></th>
+                                <th><af:outputText value="#{backingBeanScope.serviceRequestStatusBean.findLabel('SRS_VIEW_BILL_TBL_HEAD')}" id="ot17"/></th>
+                            </tr>
+                        </thead>
+                         
+                        <tbody>
+                            <af:forEach items="#{pageFlowScope.srList}" var="current" varStatus="vs">
+                                <tr>
+                                    <td>
+                                        <af:outputText value="#{current.caseId}" id="ot15"/>
+                                    </td>
+                                    <td>
+                                        <af:outputText value="#{current.creationDate}" id="ot7"/>
+                                    </td>
+                                    <td>
+                                        <af:outputText value="#{current.desc}" id="ot8"/>
+                                    </td>
+                                    <td>
+                                        <af:outputText value="#{current.reqStatus}" id="ot11"/>
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-file-pdf"></i>
+                                        <af:link text="View Bill" id="l1" partialTriggers="l1" disabled="#{!(current.checkBillId)}" 
+                                        styleClass="ml-1">
+                                            <af:setPropertyListener from="#{current.billId}" to="#{pageFlowScope.billId}"
+                                                                    type="action"/>
+                                            <af:fileDownloadActionListener contentType="#{pageFlowScope.contentType}" filename="Bill.pdf"
+                                                                           method="#{backingBeanScope.serviceRequestStatusBean.downloadBillReport}"/>
+                                        </af:link>
+                                    </td>
+                                </tr>
+                            </af:forEach>
+                        </tbody>
+                    </table>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+    </af:panelGroupLayout>
+</jsp:root>

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+     <af:panelGroupLayout id="pgl121">
+        <section class="middle_outer login-back2 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                    <h7 class="text-shadow">
+                        <?audit suppress oracle.ide.xml.validation-error?>
+                        Registration
+                    </h7>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding grey-background d-block" id="registration">
+        <af:panelGroupLayout styleClass="row" id="pgl38">
+            <af:panelGroupLayout styleClass="register-outer d-block smart-forms smart-container wrap-3" id="pgl30" partialTriggers="b1">
+                <af:panelGroupLayout id="pgl1" partialTriggers="l1 l2 l3 l4" styleClass="d-block" rendered="#{!pageFlowScope.registration.registerFlag}">
+                    
+                        <af:panelGroupLayout id="pgl2" styleClass="section d-block text-center">
+                            <af:outputText value="Registration" id="ol1"
+                                           styleClass="dark-blue login-header site_wrapper"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl3" styleClass="d-block mt-4 relative">
+                            <i class="fa fa-user fieldicon"></i>
+                            <af:inputText placeholder="Name" disabled="true" id="it1"
+                                          value="#{pageFlowScope.registration.name}" simple="true"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl4" styleClass="section d-block mt-4 addressfield">
+                            <i class="far fa-sticky-note fieldicon"></i>
+                            <af:outputText value="#{pageFlowScope.registration.address}" id="it2"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl5" styleClass="d-block mt-4 relative">
+                            <i class="fa fa-mobile fieldicon"></i>
+                            <af:inputText placeholder="Mobile No" id="it3" value="#{pageFlowScope.registration.mobileNo}"
+                                          simple="true" maximumLength="10" styleClass="#{pageFlowScope.registration.mobileValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}">
+                                         <!--af:validateRegExp pattern="(0|91)?[6-9][0-9]{9}"
+                                                   messageDetailNoMatch='"The value {1} is not a valid mobile number: "'/--> 
+                                          </af:inputText>
+                                          <af:panelGroupLayout id="pgl22" rendered="#{pageFlowScope.registration.mobileValidationFlag}">
+                                      <i class="fa-solid fa-circle-check tickicon"></i>
+                        </af:panelGroupLayout>
+                            <af:link text="Generate Mobile OTP" shortDesc="Generate Mobile OTP" id="l1" rendered="#{!pageFlowScope.registration.mobileValidationFlag}"
+                                     actionListener="#{pageFlowScope.registration.validateMobileNo}" styleClass="validatelink"/>
+                            <af:outputText value="#{pageFlowScope.registration.mobileValidationMsg}" styleClass="error"
+                                           rendered="#{pageFlowScope.registration.mobileValidationMsg ne null}" id="ot2"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pg22" styleClass="d-block mt-4 relative" rendered="#{pageFlowScope.registration.mobileOTP ne null and !pageFlowScope.registration.mobileValidationFlag}">
+                        <i class="fa fa-mobile fieldicon"></i>
+                            <af:inputText placeholder="Enter OTP for mobile" id="it8" simple="true" styleClass="#{pageFlowScope.registration.mobileOTPValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.registration.enteredMobileOTP}"/>
+                            <af:link text="Verify OTP" shortDesc="Verify OTP"  id="l3"
+                                     actionListener="#{pageFlowScope.registration.verifyMobileOTP}" styleClass="validatelink"/>
+                            <af:outputText value="#{pageFlowScope.registration.mobileOTPValidationMsg}"
+                                           rendered="#{pageFlowScope.registration.mobileOTPValidationMsg ne null}" styleClass="error"
+                                           id="ot3"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl6" styleClass="d-block mt-4 relative">
+                           <i class="fa fa-envelope fieldicon"></i>
+                            <af:inputText placeholder="Email" id="it4" value="#{pageFlowScope.registration.email}"
+                                          simple="true">
+                                <!--af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+                                                   messageDetailNoMatch='"The value {1} is not a valid email address: "'/-->
+                            </af:inputText>
+                             <af:panelGroupLayout id="pgl24" rendered="#{pageFlowScope.registration.emailValidationFlag}">
+                                      <i class="fa-solid fa-circle-check tickicon"></i>
+                        </af:panelGroupLayout>
+                            <af:link text="Generate Email OTP" shortDesc="Generate Email OTP" id="l2" rendered="#{!pageFlowScope.registration.emailValidationFlag}"
+                                     actionListener="#{pageFlowScope.registration.validateEmail}" styleClass="validatelink"/>
+                            <af:outputText value="#{pageFlowScope.registration.emailValidationMsg}" styleClass="error"
+                                           rendered="#{pageFlowScope.registration.emailValidationMsg ne null}" id="ot8"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pg23" styleClass="d-block mt-4 relative" rendered="#{pageFlowScope.registration.emailOTP ne null and !pageFlowScope.registration.emailValidationFlag}">
+                         <i class="fa fa-envelope fieldicon"></i>
+                            <af:inputText placeholder="Enter OTP for email" id="it7" simple="true" styleClass="#{pageFlowScope.registration.emailOTPValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.registration.enteredEmailOTP}"/>
+                            <af:link text="Verify OTP" shortDesc="Verify OTP"  id="l4"
+                                     actionListener="#{pageFlowScope.registration.verifyEmailOTP}" styleClass="validatelink"/>
+                            <af:outputText value="#{pageFlowScope.registration.emailOTPValidationMsg}" styleClass="error"
+                                           rendered="#{pageFlowScope.registration.emailOTPValidationMsg ne null}" id="ot4"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl7" styleClass="d-block mt-4 relative">
+                         <i class="fa fa-unlock-alt fieldicon"></i>
+                            <af:inputText placeholder="Password" id="it5" secret="true" styleClass="#{pageFlowScope.registration.passwordValidMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.registration.password}" simple="true"/>
+                            <af:outputText value="#{pageFlowScope.registration.passwordValidMsg}" styleClass="error"
+                                           rendered="#{pageFlowScope.registration.passwordValidMsg ne null}" id="ot7"/>
+                                          
+                                            <af:panelGroupLayout id="pgl11" layout="vertical" styleClass="d-block mt-4 relative">
+                                             <i class="fa fa-unlock-alt fieldicon"></i>
+                                            <af:inputText placeholder="Re-Enter Password" id="it9" secret="true" styleClass="#{pageFlowScope.registration.reEnteredpasswordValidMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.registration.reEnteredpassword}" simple="true"/>
+                            <af:outputText value="#{pageFlowScope.registration.reEnteredpasswordValidMsg}" styleClass="error"
+                                           rendered="#{pageFlowScope.registration.reEnteredpasswordValidMsg ne null}"
+                                           id="ot5"/>
+                                            </af:panelGroupLayout>
+                            
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl8" styleClass="d-block mt-4 relative">
+                        <section id="combobox">
+                            <i class="fa fa-question-circle fieldicon"></i>
+                            <af:selectOneChoice id="soc1" unselectedLabel="Secret Question" autoSubmit="true" simple="true"
+                                                valueChangeListener="#{pageFlowScope.registration.securityQuestionValueChange}">
+                                <f:selectItems value="#{pageFlowScope.registration.securityQuestionsList}" id="si1"/>
+                            </af:selectOneChoice>
+                        </section>
+                            
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl9" styleClass="d-block mt-4 relative">
+                        <i class="fa fa-user-secret fieldicon"></i>
+                            <af:inputText placeholder="Secret Answer" id="it6" styleClass="#{pageFlowScope.registration.securityAnswerValidMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.registration.securityAnswer}" simple="true"/>
+                            <af:outputText value="#{pageFlowScope.registration.securityAnswerValidMsg}"
+                                           rendered="#{pageFlowScope.registration.securityAnswerValidMsg ne null}"
+                                           id="ot6"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl10" styleClass="d-block mt-4 relative">
+                            <af:button text="Submit" id="b1" styleClass="button btn-primary" actionListener="#{pageFlowScope.registration.registerUser}"/>
+                            <af:button text="Back" id="b2" styleClass="button btn-secondary ml-4" action="back"/>
+                            
+                        </af:panelGroupLayout>
+                   
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl12" rendered="#{pageFlowScope.registration.registerFlag}" styleClass="d-block">
+                 <af:panelGroupLayout id="pg25" styleClass="text-center">
+                            <h:outputLabel value="Registration" id="ol2"
+                                           styleClass="dark-blue login-header text-center site_wrapper"/>
+                        </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl14" styleClass="d-block mt-4 relative">
+                    <af:outputText value="#{pageFlowScope.registration.registerMessage}"
+                                           rendered="#{pageFlowScope.registration.registerMessage ne null}" id="ot1"/>
+                    <af:link text="Click here to login" id="l5"
+                             actionListener="#{pageFlowScope.registration.redirectToLogin}"/>
+                             </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+    </af:panelGroupLayout>
+</jsp:root>

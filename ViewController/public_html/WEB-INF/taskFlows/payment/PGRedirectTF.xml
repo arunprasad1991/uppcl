@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="PGRedirectTF">
+    <default-activity>getParamFromPaymentGateway</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>pGRedirectBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.payment.PGRedirectBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="getParamFromPaymentGateway">
+      <method>#{backingBeanScope.pGRedirectBean.getParamFromPaymentGateway}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="genericConfirmation">
+      <page>/WEB-INF/fragments/genericConfirmation.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>getParamFromPaymentGateway</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>toConfirm</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

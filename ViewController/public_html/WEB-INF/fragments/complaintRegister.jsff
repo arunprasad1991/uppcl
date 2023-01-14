@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1" layout="vertical" halign="left" valign="baseline"
+                       inlineStyle="background-color:white;">
+        <af:outputText value="Service Request" id="ot1" inlineStyle="font-weight:bold;"/>
+        <af:panelGroupLayout id="pgl3">
+            <af:inputText id="it1" placeholder="Account No" value="#{pageFlowScope.ComplaintRegister.accountNo}" simple="true"/>
+            <af:inputText id="it2" placeholder="Case Type" value="#{pageFlowScope.ComplaintRegister.caseType}" simple="true"/>
+            <af:inputText id="it3" placeholder="Comments" rows="5" value="#{pageFlowScope.ComplaintRegister.comments}" simple="true"/>
+            <af:button text="Submit" id="b1" action="#{pageFlowScope.ComplaintRegister.onClickSubmit}"/>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

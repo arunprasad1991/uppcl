@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="UpdateProfileTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>loadPage</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>updateProfile</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.UpdateProfile</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="updateProfile">
+        <page>/WEB-INF/fragments/updateProfile.jsff</page>
+        </view>
+    <method-call id="loadPage">
+      <method>#{pageFlowScope.updateProfile.loadPage}</method>
+      <outcome>
+        <fixed-outcome>redirect</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>loadPage</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>redirect</from-outcome>
+        <to-activity-id>updateProfile</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ConsumptionCalculatorTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>consumptionCalculator</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>ConsumptionCalculator</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.ConsumptionCalculator</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="consumptionCalculator">
+      <page>/WEB-INF/fragments/consumptionCalculator.jsff</page>
+    </view>
+    <task-flow-call id="AccountDetailsOnLoadTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/common/AccountDetailsOnLoadTF.xml</document>
+        <id>AccountDetailsOnLoadTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>AccountDetailsOnLoadTF</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>consumptionCalculator</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="OnlineLoadExtensionTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>AccountDetailsOnLoadTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>onlineLoadExtBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.OnlineLoadExtBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="checkLoadExtensionEligiblity">
+      <method>#{backingBeanScope.onlineLoadExtBean.checkLoadExtensionEligibility}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="loadExtBasicInfo">
+      <page>/WEB-INF/fragments/onlineLoadExtension/loadExtBasicInfo.jsff</page>
+    </view>
+    <method-call id="initLOV">
+      <method>#{backingBeanScope.onlineLoadExtBean.initializeLOV}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="loadExtSummary">
+      <page>/WEB-INF/fragments/onlineLoadExtension/loadExtSummary.jsff</page>
+    </view>
+    <task-flow-call id="BillDeskTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/payment/BillDeskTF.xml</document>
+        <id>BillDeskTF</id>
+      </task-flow-reference>
+      <input-parameter id="__12">
+        <name>charges</name>
+        <value>#{pageFlowScope.loadExtCharges}</value>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>remarks</name>
+        <value>#{pageFlowScope.comment}</value>
+      </input-parameter>
+      <input-parameter id="__14">
+        <name>accountDetails</name>
+        <value>#{pageFlowScope.accountsDetails}</value>
+      </input-parameter>
+      <input-parameter id="__15">
+        <name>paymentFor</name>
+        <value>OnlineLoadExtension</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="AccountDetailsOnLoadTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/common/AccountDetailsOnLoadTF.xml</document>
+        <id>AccountDetailsOnLoadTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>checkLoadExtensionEligiblity</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>toinitLOV</from-outcome>
+        <to-activity-id>initLOV</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>toLoadExtension</from-outcome>
+        <to-activity-id>loadExtBasicInfo</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>initLOV</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>toLoadExtension</from-outcome>
+        <to-activity-id>loadExtBasicInfo</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>loadExtBasicInfo</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>toSummary</from-outcome>
+        <to-activity-id>loadExtSummary</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>loadExtSummary</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>backToBasicInfo</from-outcome>
+        <to-activity-id>loadExtBasicInfo</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>toBilDesk</from-outcome>
+        <to-activity-id>BillDeskTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>AccountDetailsOnLoadTF</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>checkLoadExtensionEligiblity</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

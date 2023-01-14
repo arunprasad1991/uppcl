@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ServiceRequestStatusTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>AccountDetailsOnLoadTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>serviceRequestStatusBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.ServiceRequestStatusBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="serviceRequestStatus">
+      <page>/WEB-INF/fragments/serviceRequest/serviceRequestStatus.jsff</page>
+    </view>
+    <method-call id="initializeLov">
+      <method>#{backingBeanScope.serviceRequestStatusBean.initializeLOV}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <task-flow-call id="AccountDetailsOnLoadTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/common/AccountDetailsOnLoadTF.xml</document>
+        <id>AccountDetailsOnLoadTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>initializeLov</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>toshowSRStatus</from-outcome>
+        <to-activity-id>serviceRequestStatus</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>AccountDetailsOnLoadTF</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>initializeLov</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+
+        <af:resource type="javascript">
+
+          $('.nav-tabs-dropdown').on("click", "li:not('.active') a", function (event) {
+              $(this).closest('ul').removeClass("open");
+          }).on("click", "li.active a", function (event) {
+              $(this).closest('ul').toggleClass("open");
+          });
+        </af:resource>
+
+       
+        <af:panelGroupLayout id="pgl5">
+        <section>
+        
+            <div class="mb-6 account-back">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+                            <div class="account-user">
+                                <af:panelGroupLayout id="pgl39" partialTriggers="if12 b3">
+                                    <img src="${sessionScope.profilePicContent != null and sessionScope.profilePicContent != '' ? sessionScope.profilePicContent :'http://10.0.0.192/images/user.png'}"
+                                         class="img-responsive" alt="user" style="width:58px"/>
+                                    <af:link text="Edit Profile Image" id="l81" styleClass="mt-2 white">
+                                        <af:showPopupBehavior popupId="editProfileImagePopup"/>
+                                    </af:link>
+                                </af:panelGroupLayout>
+                            </div>
+                        </div>
+                        <div class="col-xs-8 col-sm-7 col-md-7 col-lg-7">
+                            <div class="account-user-text">
+                                <span>Welcome</span>
+                                <af:outputText value="#{pageFlowScope.myAccountBean.userName}" id="ot2" inlineStyle="color: White !important;"  styleClass="white d-block fontsize20"/>
+                                <af:outputText value="A/C Number: " inlineStyle="color: White !important;" styleClass="white mt-2 fontsize20" id="ot4"/>
+                                <af:outputText value="#{pageFlowScope.myAccountBean.accountNumber}" inlineStyle="color: White !important;" styleClass="white mt-2 fontsize20" id="ot5"/><br/>
+                                <af:outputText value="Discom : " id="ot3" inlineStyle="color: White !important;" styleClass="white mt-2 fontsize20"/>
+                                <af:outputText value="#{pageFlowScope.myAccountBean.discomValue}" inlineStyle="color: White !important;"  styleClass="white  fontsize20"
+                                               id="ot27"/><br/>
+                                <af:outputText value="Last Login: " styleClass="mt-2" id="ot1"/>
+                                <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="mt-2" id="ot6"/>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 mt-28 text-right manageaccount">
+                        <af:panelGroupLayout id="pgl36" styleClass="v-top">
+                            <af:link text="Manage Accounts" action="#{pageFlowScope.myAccountBean.manageAccountsAction}" id="l3"/> <i class="fa fa-angle-double-right mt-1 ml-1"></i>
+                        </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <af:panelGroupLayout id="pgl110" styleClass="myaccount d-inline-block" partialTriggers="l1 l4">
+            <af:panelGroupLayout id="pgl14" styleClass="col-lg-2 col-md-2 col-xs-6">
+            <af:panelGroupLayout id="pgl1">
+                 <h4>Accounts</h4>
+            </af:panelGroupLayout>     
+                <af:forEach items="#{pageFlowScope.myAccountBean.myAccountList}" var="accountNo">
+                <af:panelGroupLayout id="pgl2" styleClass="#{pageFlowScope.myAccountBean.selectedAccNo eq accountNo? 'useraccountlist selected':'useraccountlist'}">
+                    <i class="fa fa-user mr-1"></i>
+                        <af:link  id="l4" actionListener="#{pageFlowScope.myAccountBean.selectAccountListener}" partialSubmit="true">
+                        <af:outputText value="#{accountNo}" id="ot44"/>
+                            <af:setPropertyListener from="#{accountNo}"
+                                                    to="#{pageFlowScope.myAccountBean.selectedAccNo}" type="action"/>
+                        </af:link>
+                </af:panelGroupLayout>
+                </af:forEach>
+                <!--<af:panelGroupLayout id="pgl7" styleClass="useraccountlist">
+                    <i class="fa fa-user mr-1"></i> <af:outputText value="1010960822" id="ot31"/>
+                </af:panelGroupLayout>-->
+                <af:panelGroupLayout id="pgl3" styleClass="col-lg-12 col-md-12 mt-7 addaccount">
+                        <i class="fa fa-plus-circle mr-1"></i>
+                    <af:link text="Add Account" id="l1" partialSubmit="true"
+                             actionListener="#{pageFlowScope.myAccountBean.addAccountActionListener}"/>
+                </af:panelGroupLayout> 
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl16" styleClass="col-lg-10 col-md-10 col-xs-6 rightpanel" partialTriggers="l5 l6 l7">
+                <div role="tabpanel" id="accountdetail">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-justified nav-tabs-dropdown" role="tablist">
+                       
+                        <li role="presentation">
+
+                            <!--<a href="#billdetails" aria-controls="billdetails" role="tab" data-toggle="tab" id="bill">
+                                <strong>Bill Details</strong></a>-->
+                            
+                            <af:link text="Bill Details" id="l5" styleClass="#{pageFlowScope.tabType eq 'billView' ? 'useraccountlist selected' : ''}"
+                                     actionListener="#{pageFlowScope.myAccountBean.billdetailsActionEvent}" partialTriggers="l5 l6 l7">
+                                <af:setPropertyListener from="billView" to="#{pageFlowScope.tabType}" type="action"/>
+                            </af:link>
+                        </li>
+                        <li role="presentation">
+                            <!--<a href="#consumptionDetails" aria-controls="consumptionDetails" role="tab" data-toggle="tab">
+                                <strong>Consumption Details</strong></a>-->
+                                
+                            <af:link text="Consumption Details" id="l6" styleClass="#{pageFlowScope.tabType eq 'consumptionView' ? 'useraccountlist selected' : ''}" partialTriggers="l5 l6 l7">
+                               <af:setPropertyListener from="consumptionView" to="#{pageFlowScope.tabType}" type="action"/>
+                            </af:link>
+                        </li>
+                         <li role="presentation">
+                            <!--<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                                <strong>Profile Details</strong></a>-->
+                                
+                            <af:link text="Profile Details" id="l7" styleClass="#{pageFlowScope.tabType eq 'profilView' ? 'useraccountlist selected' : ''}" partialTriggers="l5 l6 l7">
+                               <af:setPropertyListener from="profilView" to="#{pageFlowScope.tabType}" type="action"/>
+                            </af:link>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        
+                        <af:panelGroupLayout  styleClass="tab-pane" id="billdetails" 
+                                              rendered="#{pageFlowScope.tabType == 'billView'}" partialTriggers="l5 l6 l7">
+                            <f:subview id="billView" >
+                                <jsp:include page="/WEB-INF/fragments/billDetails.jsff"></jsp:include>
+                            </f:subview>
+
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout  styleClass="tab-pane" id="consumptionDetails" 
+                                              partialTriggers="l5 l6 l7" rendered="#{pageFlowScope.tabType == 'consumptionView'}">
+                           <f:subview id="consumptionView" >
+                                <jsp:include page="/WEB-INF/fragments/consumptionDetails.jsff" ></jsp:include>
+                            </f:subview>
+                        </af:panelGroupLayout>
+                       <af:panelGroupLayout  styleClass="tab-pane" id="profile" 
+                                             partialTriggers="l5 l6 l7" rendered="#{pageFlowScope.tabType == 'profilView'}">
+                                <f:subview id="profilView" >
+                                    <jsp:include page="/WEB-INF/fragments/profileDetails.jsff"></jsp:include>
+                                </f:subview>                    
+                        </af:panelGroupLayout>
+                        
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+            
+        <f:subview id="addView">
+        <jsp:include page="/WEB-INF/fragments/addAccount.jsff"/>
+        </f:subview>
+        <af:popup autoCancel="disabled" id="editProfileImagePopup" contentDelivery="immediate"
+                  binding="#{pageFlowScope.myAccountBean.editPhotoPopupBind}"
+                  popupFetchListener="#{pageFlowScope.myAccountBean.popupFetchListn}">
+            <af:dialog id="d1" title="Edit Profile Photo" type="none" contentWidth="420" styleClass="dialog">
+                <af:panelGroupLayout id="pgl17" styleClass="col-md-12 col-xs-12 smart-forms dialogcontent-top-box">
+                    <af:panelGroupLayout id="pgl18" styleClass="col-md-12 col-xs-12 pl-0 mb-4 mt-4" partialTriggers="b3">
+                        <af:outputText value="#{pageFlowScope.myAccountBean.findLabel('CHOOSE_FILE_TEXT')}" id="ot28"/>
+                        <section id="browseFile" class="d-inline-block mt-2">
+                            <af:inputFile label="" id="if12" simple="true"
+                                          binding="#{pageFlowScope.myAccountBean.uploadFileBind}"
+                                          autoSubmit="true"
+                                          valueChangeListener="#{pageFlowScope.myAccountBean.onUploadFileValueChange}"/>
+                            <af:outputText value="#{pageFlowScope.attachmentErrMsg}" id="ot7" partialTriggers="if12"
+                                           rendered="#{pageFlowScope.attachmentErrMsg ne null}" styleClass="error"/>
+                        </section>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl20" styleClass="mt-4">
+                        <af:button text="OK" id="b3" styleClass="button btn-primary mt-4"
+                                   actionListener="#{pageFlowScope.myAccountBean.closeProfilePicPopup}"
+                                   partialSubmit="true"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+    </af:panelGroupLayout>
+</jsp:root>
+

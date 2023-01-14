@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1" rendered="true">
+        <af:panelGroupLayout styleClass="col-md-12 col-xs-12" id="pgl2">
+            <af:panelGroupLayout styleClass="col-md-12 col-xs-12" id="pgl3">
+                <af:panelGroupLayout id="columnchart_values1" inlineStyle="width: 90%; height: 300px;">
+                    <dvt:barChart id="chart1" value="#{pageFlowScope.consumpBarChartDetails}" var="row"
+                                  titleHalign="plotAreaCenter" maximumBarWidth="100" orientation="vertical"
+                                  title="Monthly Power Consumption " hoverBehavior="dim"
+                                  inlineStyle="width:100%;height:300px" dataLabelPosition="outsideBarEdge"
+                                  seriesEffect="color">
+                        <dvt:chartLegend id="leg1" rendered="true" title="Unit" titleHalign="center"/>
+                        <f:facet name="dataStamp">
+                            <dvt:chartDataItem id="cdi1" value="#{row.value}" group="#{row.group}" borderColor="#f1f1f1"
+                                               borderWidth="1" markerShape="diamond" markerDisplayed="true"
+                                               color="#ff8e01" label="#{row.value}"
+                                               labelStyle="font-weight:bold;font-size:14px;"/>
+                        </f:facet>
+                        <dvt:chartXAxis id="cxa1" title="Month"/>
+                        <dvt:chartYAxis id="cya1" title="Unit KWH"/>
+                    </dvt:barChart>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-4" id="pgl4">
+                <div class="panel-group mt-2" id="accordion">
+                    <af:forEach items="#{pageFlowScope.monthList}" var="keyVal">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                       href="#${keyVal}">
+                                        <af:outputText value="#{keyVal}" id="ot3" styleClass="width100"/></a>
+                                </h4>
+                            </div>
+                            <div id="${keyVal}" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <af:iterator id="i3" value="#{pageFlowScope.consumpMonthWiseMap}" var="row">
+                                        <af:panelGroupLayout styleClass="col-md-12 col-xs-12" id="pgl5">
+                                            <af:iterator id="i2" value="#{row[keyVal]}" var="details" varStatus="vs">
+                                                <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl6">
+                                                    <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2"
+                                                                         id="pgl7">
+                                                        <af:outputText value="Bill Number" id="ot2"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right"
+                                                                         id="pgl8">
+                                                        <af:outputText value="#{details.billNum}" id="ot1"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl9">
+                                                    <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2"
+                                                                         id="pgl10">
+                                                        <af:outputText value="Bill Due Date" id="ot4"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right"
+                                                                         id="pgl12">
+                                                        <af:outputText value="#{details.billDueDate}" id="ot5"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl14">
+                                                    <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2"
+                                                                         id="pgl16">
+                                                        <af:outputText value="Bill Duration" id="ot8"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right"
+                                                                         id="pgl17">
+                                                        <af:outputText value="#{details.fromDate}" styleClass="d-inline-block pr-2 mr-2" id="ot9"/>
+                                                        <af:outputText value="-" styleClass="d-inline-block pr-2" id="ot11"/>
+                                                        <af:outputText value="#{details.toDate}" styleClass="d-inline-block pl-2 ml-2" id="ot10"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-2" id="pgl11">
+                                                    <af:panelGroupLayout styleClass="col-lg-8 col-md-8 col-xs-12 mt-2"
+                                                                         id="pgl13">
+                                                        <af:outputText value="Meter Reading Units" id="ot6"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-xs-12 mt-2 text-right"
+                                                                         id="pgl15">
+                                                        <af:outputText value="#{details.meterReadUnits}" id="ot7"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout styleClass="col-md-12 col-xs-12 mt-4" id="pgl18">
+                                                      <af:separator id="s1"/>
+                                                </af:panelGroupLayout>
+                                            </af:iterator>
+                                        </af:panelGroupLayout>
+                                    </af:iterator>
+                                </div>
+                            </div>
+                        </div>
+                    </af:forEach>
+                </div>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

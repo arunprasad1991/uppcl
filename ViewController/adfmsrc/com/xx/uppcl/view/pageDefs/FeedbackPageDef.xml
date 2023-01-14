@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="FeedbackPageDef"
+                Package="com.xx.uppcl.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="FeedbackFormTF1" taskFlowId="/WEB-INF/FeedbackTF.xml#FeedbackFormTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="ComplaintRegisterTF1" taskFlowId="/WEB-INF/ComplaintRegisterTF.xml#ComplaintRegisterTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="FaqsTF1" taskFlowId="/WEB-INF/FaqsTF.xml#FaqsTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

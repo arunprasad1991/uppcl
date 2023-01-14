@@ -1,0 +1,455 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="bundle" value="#{adfBundle['com.xx.uppcl.bundles.FaqsBundle']}"/>
+    <af:panelGroupLayout id="pgl39">        
+        <af:panelGroupLayout id="pgl1">
+            <section class="middle_outer login-back3 d-block">
+                <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            FAQs
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </section>
+            <af:panelGroupLayout styleClass="width100 middle_outer sec-padding grey-background d-inline-block"
+                                 id="pgl32">
+                <!--First Panel-->
+                <af:panelGroupLayout id="pgl10" styleClass="col-lg-9 col-md-9 col-xs-12 pr-0">
+                    <af:panelGroupLayout id="pgl2" styleClass="d-block mt-2 mr-4 mb-2">
+                        <div class="panel-group mt-2" id="accordion">
+                            <h6 class="${pageFlowScope.navigationType eq 'MyAccount' || pageFlowScope.navigationType eq null ? 'font-medium' : 'd-none'}">
+                                <af:outputText value="My Account - FAQs" id="ot12"/>
+                            </h6>
+                            <div class="${pageFlowScope.navigationType eq 'MyAccount' || pageFlowScope.navigationType eq null ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#MyAcc_Q1">
+                                            <af:outputText value="#{bundle.MyAcc_Q1}" id="ot2" styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="MyAcc_Q1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl41" layout="vertical">
+                                            <af:outputText value="#{bundle.MyAcc_Q1_Ans1}" id="ot89"/>
+                                            <af:outputText value="#{bundle.MyAcc_Q1_Ans2}" id="ot1"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'MyAccount' || pageFlowScope.navigationType eq null ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#MyAcc_Q2">
+                                            <af:outputText value="#{bundle.MyAcc_Q2}" id="ot3" styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="MyAcc_Q2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl5" layout="vertical">
+                                            <af:outputText value="#{bundle.MyAcc_Q2_AnsTitle}" id="ot4"/>
+                                            <af:outputText value="#{bundle.MyAcc_Q2_Ans1}" id="ot11"/>
+                                            <af:outputText value="#{bundle.MyAcc_Q2_Ans2}" id="ot5"/>
+                                            <af:outputText value="#{bundle.MyAcc_Q2_Ans3}" id="ot6"/>
+                                            <af:outputText value="#{bundle.MyAcc_Q2_Ans4}" id="ot7"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'MyAccount' || pageFlowScope.navigationType eq null ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#MyAcc_Q3">
+                                            <af:outputText value="#{bundle.MyAcc_Q3}" id="ot8" styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="MyAcc_Q3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl6" layout="vertical">
+                                            <af:outputText value="#{bundle.MyAcc_Q3_Ans1}" id="ot9"/>
+                                            <af:outputText value="#{bundle.MyAcc_Q3_Ans2}" id="ot10"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'MyAccount' || pageFlowScope.navigationType eq null ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#MyAcc_Q4">
+                                            <af:outputText value="#{bundle.MyAcc_Q4}" id="ot14" styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="MyAcc_Q4" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl7" layout="vertical">
+                                            <af:outputText value="#{bundle.MyAcc_Q4_Ans1}" id="ot15"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'MyAccount' || pageFlowScope.navigationType eq null ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#MyAcc_Q5">
+                                            <af:outputText value="#{bundle.MyAcc_Q5}" id="ot16" styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="MyAcc_Q5" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl8" layout="vertical">
+                                            <af:outputText value="#{bundle.MyAcc_Q5_Ans1}" id="ot17"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <h6 class="${pageFlowScope.navigationType eq 'BillInformation' ? 'font-medium' : 'd-none'}">
+                                <af:outputText value="Bill Information - FAQs" id="ot13"/>
+                            </h6>
+                            <div class="${pageFlowScope.navigationType eq 'BillInformation' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#BillInfo_Q1">
+                                            <af:outputText value="#{bundle.BillInfo_Q1}" id="ot18"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="BillInfo_Q1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl3" layout="vertical">
+                                            <af:outputText value="#{bundle.BillInfo_Q1_Ans1}" id="ot19"/>
+                                            <af:outputText value="#{bundle.BillInfo_Q1_Ans2}" id="ot20"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'BillInformation' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#BillInfo_Q3">
+                                            <af:outputText value="#{bundle.BillInfo_Q3}" id="ot21"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="BillInfo_Q3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl12" layout="vertical">
+                                            <af:outputText value="#{bundle.BillInfo_Q3_Ans1}" id="ot22"/>
+                                            <af:outputText value="#{bundle.BillInfo_Q3_Ans2}" id="ot23"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'BillInformation' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#BillInfo_Q4">
+                                            <af:outputText value="#{bundle.BillInfo_Q4}" id="ot24"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="BillInfo_Q4" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl9" layout="vertical">
+                                            <af:outputText value="#{bundle.BillInfo_Q4_Ans1}" id="ot26"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'BillInformation' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#BillInfo_Q5">
+                                            <af:outputText value="#{bundle.BillInfo_Q5}" id="ot27"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="BillInfo_Q5" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl14" layout="vertical">
+                                            <af:outputText value="#{bundle.BillInfo_Q5_Ans1}" id="ot28"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <h6 class="${pageFlowScope.navigationType eq 'Consumption' ? 'font-medium' : 'd-none'}">
+                                <af:outputText value="Consumption - FAQs" id="ot29"/>
+                            </h6>
+                            <div class="${pageFlowScope.navigationType eq 'Consumption' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#Consumption_Q1">
+                                            <af:outputText value="#{bundle.Consumption_Q1}" id="ot30"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="Consumption_Q1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl15" layout="vertical">
+                                            <af:outputText value="#{bundle.Consumption_Q1_Ans1}" id="ot32"/>
+                                            <af:outputText value="#{bundle.Consumption_Q1_Ans2}" id="ot31"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'Consumption' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#Consumption_Q3">
+                                            <af:outputText value="#{bundle.Consumption_Q3}" id="ot33"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="Consumption_Q3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl16" layout="vertical">
+                                            <af:outputText value="#{bundle.Consumption_Q3_Ans1}" id="ot34"/>
+                                            <af:outputText value="#{bundle.Consumption_Q3_Ans2}" id="ot35"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'Consumption' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#Consumption_Q4">
+                                            <af:outputText value="#{bundle.Consumption_Q4}" id="ot36"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="Consumption_Q4" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl17" layout="vertical">
+                                            <af:outputText value="#{bundle.Consumption_Q4_Ans1}" id="ot38"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'Consumption' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#Consumption_Q5">
+                                            <af:outputText value="#{bundle.Consumption_Q5}" id="ot39"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="Consumption_Q5" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl19" layout="vertical">
+                                            <af:outputText value="#{bundle.Consumption_Q5_Ans1}" id="ot40"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <h6 class="${pageFlowScope.navigationType eq 'ManageAccount' ? 'font-medium' : 'd-none'}">
+                                <af:outputText value="Manage Account - FAQs" id="ot41"/>
+                            </h6>
+                            <div class="${pageFlowScope.navigationType eq 'ManageAccount' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#ManageAcc_Q1">
+                                            <af:outputText value="#{bundle.ManageAcc_Q1}" id="ot42"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="ManageAcc_Q1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl20" layout="vertical">
+                                            <af:outputText value="#{bundle.ManageAcc_Q1_Ans1}" id="ot43"/>
+                                            <af:outputText value="#{bundle.ManageAcc_Q1_Ans2}" id="ot44"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'ManageAccount' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#ManageAcc_Q3">
+                                            <af:outputText value="#{bundle.ManageAcc_Q3}" id="ot45"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="ManageAcc_Q3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl21" layout="vertical">
+                                            <af:outputText value="#{bundle.ManageAcc_Q3_Ans1}" id="ot47"/>
+                                            <af:outputText value="#{bundle.ManageAcc_Q3_Ans2}" id="ot46"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'ManageAccount' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#ManageAcc_Q4">
+                                            <af:outputText value="#{bundle.ManageAcc_Q4}" id="ot48"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="ManageAcc_Q4" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl22" layout="vertical">
+                                            <af:outputText value="#{bundle.ManageAcc_Q4_Ans1}" id="ot50"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'ManageAccount' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#ManageAcc_Q5">
+                                            <af:outputText value="#{bundle.ManageAcc_Q5}" id="ot51"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="ManageAcc_Q5" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl23" layout="vertical">
+                                            <af:outputText value="#{bundle.ManageAcc_Q5_Ans1}" id="ot52"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <h6 class="${pageFlowScope.navigationType eq 'Complaint' ? 'font-medium
+                            ' : 'd-none'}">
+                                <af:outputText value="Complaint - FAQs" id="ot53"/>
+                            </h6>
+                            <div class="${pageFlowScope.navigationType eq 'Complaint' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#Complaint_Q1">
+                                            <af:outputText value="#{bundle.Complaint_Q1}" id="ot54"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="Complaint_Q1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl24" layout="vertical">
+                                            <af:outputText value="#{bundle.Complaint_Q1_Ans1}" id="ot55"/>
+                                            <af:outputText value="#{bundle.Complaint_Q1_Ans2}" id="ot56"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'Complaint' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#Complaint_Q3">
+                                            <af:outputText value="#{bundle.Complaint_Q3}" id="ot57"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="Complaint_Q3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl26" layout="vertical">
+                                            <af:outputText value="#{bundle.Complaint_Q3_Ans1}" id="ot58"/>
+                                            <af:outputText value="#{bundle.Complaint_Q3_Ans2}" id="ot59"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'Complaint' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#Complaint_Q4">
+                                            <af:outputText value="#{bundle.Complaint_Q4}" id="ot60"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="Complaint_Q4" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl27" layout="vertical">
+                                            <af:outputText value="#{bundle.Complaint_Q4_Ans1}" id="ot61"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="${pageFlowScope.navigationType eq 'Complaint' ? 'panel panel-default' : 'd-none'}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#Complaint_Q5">
+                                            <af:outputText value="#{bundle.Complaint_Q5}" id="ot62"
+                                                           styleClass="width100"/></a>
+                                    </h4>
+                                </div>
+                                <div id="Complaint_Q5" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <af:panelGroupLayout id="pgl28" layout="vertical">
+                                            <af:outputText value="#{bundle.Complaint_Q5_Ans1}" id="ot63"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <!--Second Panel-->
+                <af:panelGroupLayout id="pgl4" styleClass="col-lg-3 col-md-3 col-xs-12 faqcategory">
+                    <af:panelGroupLayout id="pgl11" styleClass="d-block mt-4 width100">
+                        <h4>
+                            <af:outputText value="Categories" id="ot25"/>
+                        </h4>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl18" styleClass="d-block width100">
+                        <af:link text="My Account" id="l2"
+                                 styleClass="#{pageFlowScope.navigationType eq 'MyAccount' || pageFlowScope.navigationType eq null ? 'useraccountlist selected' : 'useraccountlist'}">
+                            <af:setPropertyListener from="MyAccount" to="#{pageFlowScope.navigationType}"
+                                                    type="action"/>
+                        </af:link>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl25" styleClass="d-block width100">
+                        <af:link text="Bill Information" id="l3"
+                                 styleClass="#{pageFlowScope.navigationType eq 'BillInformation' ? 'useraccountlist selected' : 'useraccountlist'}">
+                            <af:setPropertyListener from="BillInformation" to="#{pageFlowScope.navigationType}"
+                                                    type="action"/>
+                        </af:link>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl29" styleClass="d-block width100">
+                        <af:link text="Consumption" id="l4"
+                                 styleClass="#{pageFlowScope.navigationType eq 'Consumption' ? 'useraccountlist selected' : 'useraccountlist'}">
+                            <af:setPropertyListener from="Consumption" to="#{pageFlowScope.navigationType}"
+                                                    type="action"/>
+                        </af:link>
+                        <af:panelGroupLayout id="pgl30" styleClass="d-block width100">
+                            <af:link text="Manage Account" id="l5"
+                                     styleClass="#{pageFlowScope.navigationType eq 'ManageAccount' ? 'useraccountlist selected' : 'useraccountlist'}">
+                                <af:setPropertyListener from="ManageAccount" to="#{pageFlowScope.navigationType}"
+                                                        type="action"/>
+                            </af:link>
+                            <af:panelGroupLayout id="pgl31" styleClass="d-block width100">
+                                <af:link text="Complaint" id="l1"
+                                         styleClass="#{pageFlowScope.navigationType eq 'Complaint' ? 'useraccountlist selected' : 'useraccountlist'}">
+                                    <af:setPropertyListener from="Complaint" to="#{pageFlowScope.navigationType}"
+                                                            type="action"/>
+                                </af:link>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

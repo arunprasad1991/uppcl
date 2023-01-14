@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.22.48" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.xx.uppcl.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/Login.jspx" usageId="com_xx_uppcl_view_LoginPageDef"/>
+    <page path="/Registration.jspx" usageId="com_xx_uppcl_view_RegistrationPageDef"/>
+    <page path="/Account.jspx" usageId="com_xx_uppcl_view_AccountPageDef"/>
+    <page path="/ChangePassword.jspx" usageId="com_xx_uppcl_view_ChangePasswordPageDef"/>
+    <page path="/Feedback.jspx" usageId="com_xx_uppcl_view_FeedbackPageDef"/>
+    <page path="/UpdateProfile.jspx" usageId="com_xx_uppcl_view_UpdateProfilePageDef"/>
+    <page path="/ConsumptionCalculator.jspx" usageId="com_xx_uppcl_view_ConsumptionCalculatorPageDef"/>
+    <page path="/TestPage.jspx" usageId="com_xx_uppcl_view_TestPagePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_xx_uppcl_view_LoginPageDef" path="com.xx.uppcl.view.pageDefs.LoginPageDef"/>
+    <page id="com_xx_uppcl_view_RegistrationPageDef" path="com.xx.uppcl.view.pageDefs.RegistrationPageDef"/>
+    <page id="com_xx_uppcl_view_AccountPageDef" path="com.xx.uppcl.view.pageDefs.AccountPageDef"/>
+    <page id="com_xx_uppcl_view_ChangePasswordPageDef" path="com.xx.uppcl.view.pageDefs.ChangePasswordPageDef"/>
+    <page id="com_xx_uppcl_view_FeedbackPageDef" path="com.xx.uppcl.view.pageDefs.FeedbackPageDef"/>
+    <page id="com_xx_uppcl_view_UpdateProfilePageDef" path="com.xx.uppcl.view.pageDefs.UpdateProfilePageDef"/>
+    <page id="com_xx_uppcl_view_ConsumptionCalculatorPageDef"
+          path="com.xx.uppcl.view.pageDefs.ConsumptionCalculatorPageDef"/>
+    <page id="com_xx_uppcl_view_TestPagePageDef" path="com.xx.uppcl.view.pageDefs.TestPagePageDef"/>
+  </pageDefinitionUsages>
+</Application>

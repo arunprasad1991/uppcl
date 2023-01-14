@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+ 
+    <af:panelGroupLayout id="pgl1">
+        <af:panelGroupLayout styleClass="middle_outer login-back2 d-block" id="pgl9">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                    <h7 class="text-shadow">
+                        <?audit suppress oracle.ide.xml.validation-error?>
+                        Registration
+                    </h7>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    
+    <af:panelGroupLayout styleClass="middle_outer sec-padding grey-background d-block" id="pgl10">
+        <af:panelGroupLayout styleClass="row" id="pgl38">
+            <af:panelGroupLayout styleClass="register-outer d-block smart-forms smart-container wrap-3" id="pgl8">
+                <af:panelGroupLayout styleClass="d-block" id="pgl30">
+                    <af:panelGroupLayout id="pgl2" styleClass="section d-block text-center">
+                     <af:outputText value="Registration" id="ol1"
+                                               styleClass="dark-blue login-header site_wrapper"/>
+                       
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl3" layout="vertical" partialTriggers="l1 l2 b1">
+                            <af:panelGroupLayout id="pgl11" styleClass="d-block mt-4 relative">
+                                <i class="fab fa-discourse fieldicon"></i>
+                                <af:selectOneChoice id="soc1" unselectedLabel="Select Discom" simple="true" autoSubmit="true"
+                                                    value="#{pageFlowScope.registration.discomValue}">
+                                    <f:selectItems value="#{pageFlowScope.registration.discomList}" id="si1"/>
+                                </af:selectOneChoice>
+                                <af:outputText value="#{pageFlowScope.registration.discomValidationMessage}"
+                                           rendered="#{pageFlowScope.registration.discomValidationMessage ne null}" id="ot3" styleClass="error"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl" styleClass="d-block mt-4 relative" partialTriggers="it1">
+                            <i class="fa fa-user fieldicon"></i>
+                            <af:inputText id="it1" placeholder="Account No." autoSubmit="true" simple="true" styleClass="#{pageFlowScope.registration.accountValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.registration.accountNumber}"
+                                          valueChangeListener="#{pageFlowScope.registration.accountNoValueChange}"/>
+                            <af:panelGroupLayout id="pgl22" rendered="#{pageFlowScope.registration.accountValidationFlag}">
+                                <i class="fa-solid fa-circle-check tickicon"></i>
+                            </af:panelGroupLayout>
+                            <af:link text="Validate" shortDesc="Validate Account No" id="l1" rendered="#{!pageFlowScope.registration.accountValidationFlag}"
+                                     actionListener="#{pageFlowScope.registration.validateAccountNo}" styleClass="validatelink"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl6" styleClass="d-block" partialTriggers="it1">
+                            <af:outputText value="#{pageFlowScope.registration.accountValidationMsg}"
+                                           rendered="#{pageFlowScope.registration.accountValidationMsg ne null}" id="ot2" styleClass="error"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl4" styleClass="d-block mt-4 relative" partialTriggers="it2"> 
+                            <i class="far fa-sticky-note fieldicon"></i>
+                            <af:inputText id="it2" placeholder="Bill No." autoSubmit="true" simple="true" styleClass="#{pageFlowScope.registration.billNoValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.registration.billNumber}"
+                                          valueChangeListener="#{pageFlowScope.registration.billNoValueChange}"/>
+                                          <af:panelGroupLayout id="pgl2w" rendered="#{pageFlowScope.registration.billNoValidationFlag}">
+                                          <i class="fa-solid fa-circle-check tickicon"></i>
+                            </af:panelGroupLayout>
+                            <af:link text="Validate" shortDesc="Validate Bill" id="l2" rendered="#{!pageFlowScope.registration.billNoValidationFlag}"
+                                     actionListener="#{pageFlowScope.registration.validateBillNo}" styleClass="validatelink"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl7" styleClass="d-block" partialTriggers="it2">
+                            <af:outputText value="#{pageFlowScope.registration.billNoValidationMsg}"
+                                           rendered="#{pageFlowScope.registration.billNoValidationMsg ne null}" id="ot1" styleClass="error"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl5" styleClass="d-block mt-6">
+                            <af:button text="Continue" styleClass="button btn-primary" id="b1" action="#{pageFlowScope.registration.continueAction}"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</af:panelGroupLayout>
+</jsp:root>

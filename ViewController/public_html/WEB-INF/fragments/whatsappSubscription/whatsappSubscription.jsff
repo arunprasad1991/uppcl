@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1">
+        <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout id="pgl83" styleClass="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            WhatsApp Subscription
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl93" styleClass="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                    <div class="account-user-text">
+                        <af:outputText value="Welcome : " id="ot2" inlineStyle="color: orange !important;"
+                                       styleClass="d-inline-block fontsize20"/>
+                         
+                        <af:outputText value="#{sessionScope.loggedInUserName}" id="ot18"
+                                       inlineStyle="color: White !important;"
+                                       styleClass="white d-inline-block fontsize22 pl-4"/>
+                         
+                        <br/>
+                         
+                        <af:outputText value="Last Login  : " styleClass="d-inline-block" id="ot1"/>
+                         
+                        <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="pl-4 white d-inline-block" id="ot6"/>
+                    </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="accinfo">
+            <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back" id="pgl23"
+                                 partialTriggers="b1 b2">
+                <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-sm-6 col-xs-6 d-block smart-forms smart-container static wrap-3 pl-0"
+                                     id="pgl30">
+                    <af:panelGroupLayout id="pgl7" styleClass="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                        <af:panelGroupLayout id="pgl25" styleClass="d-block mt-4 relative">
+                            <section id="combobox">
+                                <i class="fa fa-user fieldicon"></i>
+                                <af:selectOneChoice unselectedLabel="#{backingBeanScope.whatsAppSubscriptionBean.findLabel('SELECT_ACC_NO')}"
+                                                    value="#{pageFlowScope.accountsDetails.accountNo}" simple="true"
+                                                    id="soc2"
+                                                    styleClass="#{pageFlowScope.actNumErrMsg ne null ? 'mandate' : ''}"
+                                                    valueChangeListener="#{backingBeanScope.whatsAppSubscriptionBean.onAccountSelValueChange}"
+                                                    autoSubmit="true">
+                                    <f:selectItems value="#{pageFlowScope.accountsList}" id="si2"/>
+                                </af:selectOneChoice>
+                                <af:outputText value="#{pageFlowScope.actNumErrMsg}" id="ot74"
+                                               rendered="#{pageFlowScope.actNumErrMsg ne null}" styleClass="error"/>
+                            </section>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 font14" id="pgl26">
+                    <af:panelGroupLayout id="pgl11">
+                        <af:panelGroupLayout id="pgl21" styleClass="col-lg-12 col-md-12 col-xs-12"
+                                             partialTriggers="soc2">
+                            <af:panelGroupLayout id="pgl8" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl29" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.whatsAppSubscriptionBean.findLabel('NAME')}"
+                                                   styleClass="bold" id="ot9"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl31" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.name}" id="ot13"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl9" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl32" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.whatsAppSubscriptionBean.findLabel('WS_ACCOUNT_LABEL')}"
+                                                   styleClass="bold" id="ot10"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl33" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.accountNo}" id="ot14"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="whatsapp">
+            <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back mb-2"
+                                 id="pgl24" partialTriggers="b1 b2 soc2">
+                <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-sm-8 col-xs-12 d-block smart-forms smart-container static wrap-3 mt-4"
+                                     id="pgl16">
+                    <af:panelGroupLayout id="pgl4" styleClass="col-md-12 col-xs-12 d-block pl-0 mb-4">
+                        <af:panelGroupLayout id="pgl27" styleClass="col-md-2 col-xs-2 col-lg-2  pl-0">
+                            <af:selectBooleanCheckbox text="" label="Label 1" id="sbc1" simple="true" value="#{pageFlowScope.isSubscribe}" autoSubmit="true"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl28" styleClass="col-md-3 col-xs-6 ml-4 mt-4 ">
+                            <af:outputText value="#{backingBeanScope.whatsAppSubscriptionBean.findLabel('WS_SUBSCRIBE_LABEL')}"
+                                           id="ot8" styleClass="fontsize18 d-block less-mt-2"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl2" styleClass="col-md-12 col-xs-12 d-block mt-4 pl-0 mb-4">
+                        <af:panelGroupLayout id="pgl3" styleClass="col-md-5 col-xs-6  pl-0">
+                            <af:button text="#{backingBeanScope.whatsAppSubscriptionBean.findLabel('SUBMIT')}" id="b1"
+                                       styleClass="button btn-primary"
+                                       action="#{backingBeanScope.whatsAppSubscriptionBean.submitWhatsAppSubs}"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl5" styleClass="col-md-3 col-xs-6 ml-4 mt-4 ">
+                            <af:button text="#{backingBeanScope.whatsAppSubscriptionBean.findLabel('RESET')}" id="b2"
+                                       styleClass="button btn-secondary"
+                                       action="#{backingBeanScope.whatsAppSubscriptionBean.cancelRequest}"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:outputText value="#{pageFlowScope.whatsappValidErrMsg}" id="ot17"
+                                   rendered="#{pageFlowScope.whatsappValidErrMsg ne null}" styleClass="error"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-block smart-forms smart-container static wrap-3 mt-4"
+                                     id="pgl6">
+                     <af:outputText value="#{backingBeanScope.whatsAppSubscriptionBean.findLabel('WS_FOOTER_TEXT')}" id="ot3" styleClass="fontsize18 error"/>          
+                </af:panelGroupLayout>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="immediate"
+                          binding="#{backingBeanScope.whatsAppSubscriptionBean.messagePopupBind}">
+                    <af:dialog id="d1" title="Information" type="none" contentWidth="420" styleClass="dialog ">
+                        <af:panelGroupLayout id="pgl17"
+                                             styleClass="col-md-12 col-xs-12 smart-forms dialogcontent-top-box">
+                            <af:panelGroupLayout id="pgl18" styleClass="col-md-12 col-xs-12 pl-0 mb-4 mt-4">
+                                <af:panelGroupLayout id="pgl19">
+                                    <af:outputText value="#{pageFlowScope.whatsappValidErrMsg}" id="ot21"
+                                                   styleClass="fontsize16"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl20" styleClass="mt-4">
+                                <af:button text="OK" id="b3" styleClass="button btn-primary mt-4"
+                                           actionListener="#{backingBeanScope.whatsAppSubscriptionBean.closeMessagePopup}"
+                                           partialSubmit="true"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+            </af:panelGroupLayout>
+        </section>
+    </af:panelGroupLayout>
+</jsp:root>

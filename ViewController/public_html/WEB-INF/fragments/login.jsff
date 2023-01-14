@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+    <af:panelGroupLayout id="pg2230">
+    <section class="middle_outer login-back1 d-block">
+        <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+              <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">                    
+                    <h7 class="text-shadow">
+                    <?audit suppress oracle.ide.xml.validation-error?>
+                    Login</h7>
+              </af:panelGroupLayout>                    
+          </af:panelGroupLayout>
+    </section>
+    <section class="width100 middle_outer sec-padding grey-background d-inline-block">
+    <af:panelGroupLayout styleClass="row" id="pgl38">
+        <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl30">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="pgl12">
+                <af:panelGroupLayout styleClass="row" id="pgl26">
+                    <af:panelGroupLayout styleClass="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" id="pgl25">
+                        <af:panelGroupLayout styleClass="login-new" id="pgl24">
+                            <af:panelGroupLayout styleClass="icon-back" id="pgl1">
+                                <i class="fas fa-handshake icon-login"></i>
+                            </af:panelGroupLayout><br/>
+                            <span class="icon-text">Account Summary</span>                            
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" id="pgl23">
+                        <af:panelGroupLayout styleClass="login-new" id="pgl22">
+                            <af:panelGroupLayout styleClass="icon-back" id="pgl3">
+                                <i class="fas fa-lightbulb icon-login"></i>
+                            </af:panelGroupLayout><br/>
+                            <span class="icon-text">Local Extension</span>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center mt-7" id="pgl21">
+                        <af:panelGroupLayout styleClass="login-new" id="pgl20">
+                            <af:panelGroupLayout styleClass="icon-back" id="pgl4">
+                                <i class="fas fa-globe icon-login"></i>
+                            </af:panelGroupLayout><br/>
+                            <span class="icon-text">Update KYC</span>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center mt-7" id="pgl19">
+                        <af:panelGroupLayout styleClass="login-new" id="pgl18">
+                            <af:panelGroupLayout styleClass="icon-back" id="pgl5">
+                                <i class="fas fa-tachometer-alt icon-login"></i>
+                            </af:panelGroupLayout><br/>
+                            <span class="icon-text">Self Bill Generation</span>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center mt-7" id="pgl16">
+                        <af:panelGroupLayout styleClass="login-new" id="pgl17">
+                            <af:panelGroupLayout styleClass="icon-back" id="pgl6">
+                                <i class="fas fa-globe icon-login"></i>
+                            </af:panelGroupLayout><br/>
+                            <span class="icon-text">Bill Consumer</span>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center mt-7" id="pgl14">
+                        <af:panelGroupLayout styleClass="login-new" id="pgl15">
+                            <af:panelGroupLayout styleClass="icon-back" id="pgl7">
+                                <i class="fas fa-edit icon-login"></i>
+                            </af:panelGroupLayout><br/>
+                            <span class="icon-text">E-Bill Services</span>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-10" id="pgl27">
+                <af:panelGroupLayout styleClass="text-box padding-4 border-login" inlineStyle="box-shadow: 0px 1px 16px 0px #9e9e9e !important;min-height:500px !important;" id="pgl28">
+                    <af:panelGroupLayout styleClass="smart-forms smart-container wrap-3" id="pgl29" partialTriggers="b2 sbc1">
+                        <af:panelGroupLayout styleClass="section d-block text-center" id="pgl2">                             
+                            <af:outputText value="#{pageFlowScope.login.headerText}" id="ot13"
+                                       styleClass="dark-blue login-header site_wrapper"/>
+                        </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl39" styleClass="d-block mt-4 relative">
+                                    <i class="fab fa-discourse fieldicon"></i>
+                                    <af:selectOneChoice unselectedLabel="Select Discom" id="soc1" simple="true" autoSubmit="true"
+                                                        value="#{pageFlowScope.login.discomValue}">
+                                        <f:selectItems value="#{pageFlowScope.login.discomList}" id="si1"/>
+                                    </af:selectOneChoice>
+                                    <af:outputText value="#{pageFlowScope.login.discomValidationMessage}" partialTriggers="b2" id="ot4"
+                                    styleClass="error" rendered="#{pageFlowScope.login.discomValidationMessage ne null}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout styleClass="section d-block mt-4" id="pgl11">
+                                    <i class="fa fa-user fieldicon"></i>
+                                    <af:inputText id="it1" placeholder="Enter Account No." autoSubmit="true" simple="true"
+                                          value="#{pageFlowScope.login.accountNumber}" styleClass="#{pageFlowScope.login.accNoValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"/>
+                            
+                                    <af:outputText value="#{pageFlowScope.login.accNoValidationMsg}" partialTriggers="b2"
+                                           id="ot5" styleClass="error" rendered="#{pageFlowScope.login.accNoValidationMsg ne null}"/>
+                                </af:panelGroupLayout>
+                       
+                                 <af:panelGroupLayout styleClass="section d-block mt-4" id="pgl9">
+                                    <af:selectBooleanCheckbox text="Use OTP as password" id="sbc1" simple="true"
+                                                      value="#{pageFlowScope.login.otpCheckBox}" autoSubmit="true"
+                                                      valueChangeListener="#{pageFlowScope.login.otpCheckBoxValueChange}"
+                                                      styleClass="otpcheckbox"/>
+                                     </af:panelGroupLayout>
+                                 <af:panelGroupLayout styleClass="section d-block" id="pgl31">
+                                    <af:outputText value="#{pageFlowScope.login.otpSendMessage}"
+                                                   rendered="#{pageFlowScope.login.otpCheckBox eq true and pageFlowScope.login.otpSendMessage ne null}" id="ot2" partialTriggers="sbc1"
+                                                   styleClass="error"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout styleClass="section d-block mt-4" id="pgl32" partialTriggers="sbc1">
+                                    <i class="fa fa-lock fieldicon"></i>
+                                    <af:inputText id="it3" placeholder="Enter Password" label="" styleClass="#{pageFlowScope.login.passwordValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                                  value="#{pageFlowScope.login.password}" secret="true"
+                                                  rendered="#{!(pageFlowScope.login.otpCheckBox eq true)}" simple="true"/>
+                                                  
+                                    <af:inputText placeholder="Enter OTP" id="it2" simple="true"
+                                                  value="#{pageFlowScope.login.oneTimePassword}" styleClass="#{pageFlowScope.login.otpValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                                  rendered="#{pageFlowScope.login.otpCheckBox eq true}"/>
+                                    <af:outputText value="#{pageFlowScope.login.passwordValidationMsg}" partialTriggers="b2"
+                                                   id="ot6" styleClass="error" rendered="#{pageFlowScope.login.passwordValidationMsg ne null}"/>
+                                </af:panelGroupLayout>
+                                <af:outputText value="#{pageFlowScope.login.loginErrorMessage}" partialTriggers="b2"
+                                           id="ot1" styleClass="#{pageFlowScope.login.loginErrorMessage? 'd-inline-block error': 'error'}"/>
+                        <af:panelGroupLayout styleClass="section d-block mt-4" id="pgl33">
+                            
+                            <af:inputText label="" id="it4" value="#{pageFlowScope.login.captchaStr}" simple="true" 
+                                          disabled="true" partialTriggers="l1" styleClass="captchatext"/>
+                             <af:panelGroupLayout styleClass="d-inline-block refreshbox ml-4" id="pgl10">
+                                 <af:link id="l1" actionListener="#{pageFlowScope.login.refreshCaptcha}"
+                                      shortDesc="Refresh">
+                                    <i class="fas fa-sync-alt d-inline-block refreshicon" aria-hidden="true"></i>
+                                </af:link>
+                             </af:panelGroupLayout>
+                           
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="section d-block mt-4" id="pgl34">
+                            <i class="fa fa-pencil fieldicon"></i>
+                            <af:inputText placeholder="Enter Captcha" value="#{pageFlowScope.login.enteredCaptcha}" 
+                                          autoSubmit="true" id="it5" styleClass="captcha" simple="true"/>
+                            <af:outputText value="#{pageFlowScope.login.captchaValidationMessage}" partialTriggers="b2"
+                                           id="ot3" styleClass="error" rendered="#{pageFlowScope.login.captchaValidationMessage ne null}"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="form-footer d-block mt-4" id="pgl35">
+                            <af:button text="Sign in" id="b2" action="#{pageFlowScope.login.loginAction}"
+                                       styleClass="button btn-primary pt-2"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="bot-text d-block mt-1" id="pgl36">
+                            <af:panelGroupLayout id="pgl8">
+                                <af:link text="Forgot Password" id="l2" action="forgot"/>
+                                <span class="pl-1 pr-1">|</span>
+                                <af:link text="Register Here" id="l3"
+                                         actionListener="#{pageFlowScope.login.redirectToRegister}"></af:link>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+</af:panelGroupLayout>
+    </section>
+    </af:panelGroupLayout>
+</jsp:root>
+

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ServiceRequestsTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>AccountDetailsOnLoadTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>correctionType</name>
+      <value>#{pageFlowScope.selectedCorrectionType}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__17">
+      <managed-bean-name>serviceRequestBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.ServiceRequestBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="NameCorrection">
+      <page>/WEB-INF/fragments/serviceRequest/NameCorrection.jsff</page>
+    </view>
+    <view id="AddressCorrection">
+      <page>/WEB-INF/fragments/serviceRequest/AddressCorrection.jsff</page>
+    </view>
+    <view id="BillCorrection">
+      <page>/WEB-INF/fragments/serviceRequest/BillCorrection.jsff</page>
+    </view>
+    <view id="MeterRelatedComplaint">
+      <page>/WEB-INF/fragments/serviceRequest/MeterRelatedComplaint.jsff</page>
+    </view>
+    <view id="ConnectionTransferRequest">
+      <page>/WEB-INF/fragments/serviceRequest/ConnectionTransferRequest.jsff</page>
+    </view>
+    <view id="CategoryChangeRequest">
+      <page>/WEB-INF/fragments/serviceRequest/CategoryChangeRequest.jsff</page>
+    </view>
+    <view id="ConnectionDisconnectionRequest">
+      <page>/WEB-INF/fragments/serviceRequest/ConnectionDisconnectionRequest.jsff</page>
+    </view>
+    <method-call id="getAccountListAndDetails">
+      <method>#{backingBeanScope.serviceRequestBean.getAccountListAndDetails}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <method-call id="initLOV">
+      <method>#{backingBeanScope.serviceRequestBean.initializeLOV}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="genericConfirmation">
+      <page>/WEB-INF/fragments/genericConfirmation.jsff</page>
+    </view>
+    <task-flow-call id="BillDeskTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/payment/BillDeskTF.xml</document>
+        <id>BillDeskTF</id>
+      </task-flow-reference>
+      <input-parameter id="__7">
+        <name>accountDetails</name>
+        <value>#{pageFlowScope.accountsDetails}</value>
+      </input-parameter>
+      <input-parameter id="__8">
+        <name>serviceReqDetails</name>
+        <value>#{pageFlowScope.srDetails}</value>
+      </input-parameter>
+      <input-parameter id="__9">
+        <name>paymentFor</name>
+        <value>#{pageFlowScope.paymentType}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="AccountDetailsOnLoadTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/common/AccountDetailsOnLoadTF.xml</document>
+        <id>AccountDetailsOnLoadTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__18">
+      <from-activity-id>getAccountListAndDetails</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>initLOV</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>initLOV</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>toNameCorrection</from-outcome>
+        <to-activity-id>NameCorrection</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__21">
+        <from-outcome>toAddressCorrection</from-outcome>
+        <to-activity-id>AddressCorrection</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome>toBillCorrection</from-outcome>
+        <to-activity-id>BillCorrection</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__23">
+        <from-outcome>toMeterRelatedComplaint</from-outcome>
+        <to-activity-id>MeterRelatedComplaint</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome>toConnecionTransferReq</from-outcome>
+        <to-activity-id>ConnectionTransferRequest</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__25">
+        <from-outcome>toCatChangeReq</from-outcome>
+        <to-activity-id>CategoryChangeRequest</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>toConnectDisconnectReq</from-outcome>
+        <to-activity-id>ConnectionDisconnectionRequest</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id>NameCorrection</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>toConfirmation</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__31">
+      <from-activity-id>BillCorrection</from-activity-id>
+      <control-flow-case id="__32">
+        <from-outcome>toConfirmation</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id>AddressCorrection</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome>toConfirmation</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__35">
+      <from-activity-id>MeterRelatedComplaint</from-activity-id>
+      <control-flow-case id="__36">
+        <from-outcome>toConfirmation</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id>CategoryChangeRequest</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>toPaymentProcess</from-outcome>
+        <to-activity-id>BillDeskTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>ConnectionDisconnectionRequest</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>toPaymentProcess</from-outcome>
+        <to-activity-id>BillDeskTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>AccountDetailsOnLoadTF</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>getAccountListAndDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>ConnectionTransferRequest</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>toConfirmation</from-outcome>
+        <to-activity-id>genericConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" 
+xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core">
+
+  <af:panelGroupLayout id="pgl1">
+   <af:panelGroupLayout id="pgl2">
+            <div class="mb-6 account-back">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+                            <div class="account-user">
+                                <af:panelGroupLayout id="pgl39" partialTriggers="if12 b3">
+                                    <img src="${sessionScope.profilePicContent != null and sessionScope.profilePicContent != '' ? sessionScope.profilePicContent :'http://10.0.0.192/images/user.png'}"
+                                         class="img-responsive" alt="user" style="width:58px"/>
+                                    <af:link text="Edit Profile Image" id="l81" styleClass="mt-2 white">
+                                        <af:showPopupBehavior popupId="editProfileImagePopup"/>
+                                    </af:link>
+                                </af:panelGroupLayout>
+                            </div>
+                        </div>
+                        <div class="col-xs-8 col-sm-7 col-md-7 col-lg-7">
+                            <div class="account-user-text">
+                                <span>Welcome</span>
+                                <af:outputText value="#{pageFlowScope.myAccountBean.userName}" id="ot2" inlineStyle="color: White !important;"  styleClass="white d-block fontsize20"/>
+                                <af:outputText value="A/C Number: " inlineStyle="color: White !important;" styleClass="white mt-2 fontsize20" id="ot4"/>
+                                <af:outputText value="#{pageFlowScope.myAccountBean.accountNumber}" inlineStyle="color: White !important;" styleClass="white mt-2 fontsize20" id="ot5"/><br/>
+                                <af:outputText value="Discom : " id="ott3" inlineStyle="color: White !important;" styleClass="white mt-2 fontsize20"/>
+                                <af:outputText value="#{pageFlowScope.myAccountBean.discomValue}" inlineStyle="color: White !important;"  styleClass="white  fontsize20"
+                                               id="ot27"/><br/>
+                                <af:outputText value="Last Login: " styleClass="mt-2" id="ot1"/>
+                                <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="mt-2" id="ot6"/>
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 mt-28 text-right manageaccount">
+                        <af:panelGroupLayout id="pgl36" styleClass="v-top">
+                            <i class="fa fa-angle-double-left"></i><af:link text="Back to My Account" styleClass="ml-1" id="l1" action="return"/>
+                            
+                        </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl6" styleClass="col-lg-12 col-md-12 text-right orangetxt fontsize20 addmanageaccount">
+                        <i class="fa fa-plus-circle mr-1"></i>
+                    <af:link text="Add Account" id="l3"
+                             actionListener="#{pageFlowScope.myAccountBean.addAccountActionListener}"/>
+                </af:panelGroupLayout> 
+        <af:panelGroupLayout id="pgl5" styleClass="width100 middle_outer d-inline-block">
+              <div class="panel-group mt-2" id="accordion">
+            <af:forEach items="#{pageFlowScope.myAccountBean.manageAccountList}" var="accounts">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#${accounts.accountNo}">
+                       <i class="fa fa-user mr-1"></i>  <af:outputText value="#{accounts.accountNo}" id="ot7"/> <span class="d-inline-block ml-2"><i class="fa fa-minus"></i>
+                           <af:outputText value="#{accounts.name}" styleClass="ml-2" id="ot8"/></span> <span class="d-inline-block ml-1">
+                           <af:outputText value="(Primary Account)" styleClass="font11" rendered="#{pageFlowScope.myAccountBean.accountNumber eq accounts.accountNo}" id="ot3"/></span>  </a>                
+                  </h4>
+                </div>
+                <div id="${accounts.accountNo}" class="${pageFlowScope.myAccountBean.accountNumber eq accounts.accountNo ? 'panel-collapse collapse in' : 'panel-collapse collapse'}">
+                  <div class="panel-body">
+                        <af:panelGroupLayout id="pgl4">
+                                 <af:panelGroupLayout id="pgl11" styleClass="d-inline-block width100">
+                                 <af:panelGroupLayout id="pgl21" styleClass="col-lg-12 col-md-12 col-xs-12 pl-0">
+                                    <af:panelGroupLayout id="pgl8" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                        <af:outputText value="Name" styleClass="bold" id="ot9"/>
+                                    </af:panelGroupLayout>
+                            
+                                    <af:panelGroupLayout id="pgl9" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                        <af:outputText value="Billing Address" styleClass="bold" id="ot10"/>
+                                    </af:panelGroupLayout>
+                            
+                                    <af:panelGroupLayout id="pgl10" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                        <af:outputText value="Person ID" styleClass="bold" id="ot11"/>
+                                    </af:panelGroupLayout>
+                            
+                                    <af:panelGroupLayout id="pgl13" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                        <af:outputText value="Email" styleClass="bold" id="ot12"/>
+                                    </af:panelGroupLayout>                    
+                             </af:panelGroupLayout>
+                             
+                              <af:panelGroupLayout id="pgl22" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2 pl-0">
+                                <af:panelGroupLayout id="pgl17" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                    <af:outputText value="#{accounts.name}" id="ot13"/>
+                                </af:panelGroupLayout>
+                                
+                                <af:panelGroupLayout id="pgl18" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                        <af:outputText value="#{accounts.address}" id="ot14"/>
+                                </af:panelGroupLayout>
+                                
+                                <af:panelGroupLayout id="pgl20" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                    <af:outputText value="#{accounts.personID}" id="ot15"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl19" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                      <af:outputText value="#{accounts.email}" id="ot16"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>                       
+                            
+                        </af:panelGroupLayout>
+                       
+                        <af:panelGroupLayout id="pgl12" styleClass="d-inline-block mt-10 width100">
+                            <af:panelGroupLayout id="pgl23" styleClass="col-lg-12 col-md-12 col-xs-12 pl-0">
+                                    <af:panelGroupLayout id="pgl24" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                         <af:outputText value="Division" styleClass="bold" id="ot18"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl25" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                         <af:outputText value="Discom Name" styleClass="bold" id="ot17"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl26" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                         <af:outputText value="Sub Division" styleClass="bold" id="ot19"/>
+                                    </af:panelGroupLayout>                            
+                                    <af:panelGroupLayout id="pgl28" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                         <af:outputText value="Connection Status" styleClass="bold" id="ot25"/>
+                                    </af:panelGroupLayout>
+                                   
+                            </af:panelGroupLayout>
+                            
+                            <af:panelGroupLayout id="pgl29" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2 pl-0">
+                                    <af:panelGroupLayout id="pgl34" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                         <af:outputText value="#{accounts.division}" id="ot22"/>
+                                    </af:panelGroupLayout>
+                                    
+                                    <af:panelGroupLayout id="pgl33" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                         <af:outputText value="#{accounts.discom}" id="ot21"/>
+                                    </af:panelGroupLayout>
+                                    
+                                    <af:panelGroupLayout id="pgl32" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                         <af:outputText value="#{accounts.subDivision}" id="ot23"/>
+                                    </af:panelGroupLayout> 
+                                    
+                                    <af:panelGroupLayout id="pgl30" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                           <af:outputText value="#{accounts.connectionStatus}" id="ot26"/>
+                                    </af:panelGroupLayout>
+                            </af:panelGroupLayout>                  
+                        </af:panelGroupLayout>
+                                
+                        </af:panelGroupLayout>
+                  </div>
+                  <af:panelGroupLayout id="pgl3" styleClass="d-inline-block width100 text-right mb-4">
+                        <af:button text="Remove" id="b1" partialSubmit="true" styleClass="button btn-primary mr-3"
+                                 actionListener="#{pageFlowScope.myAccountBean.openRemovePopUp}" rendered="#{pageFlowScope.myAccountBean.accountNumber ne accounts.accountNo}">
+                                <af:setPropertyListener from="#{accounts.accountNo}"
+                                                        type="action"
+                                                        to="#{pageFlowScope.myAccountBean.removeAccNo}"/>
+                        </af:button>
+                </af:panelGroupLayout>
+                </div>
+              </div>
+              </af:forEach>
+            </div>
+            </af:panelGroupLayout>
+                    <f:subview id="addAccountsView">
+        <jsp:include page="/WEB-INF/fragments/addAccount.jsff"/>
+        </f:subview>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="immediate"
+                  binding="#{pageFlowScope.myAccountBean.removeAccountPopUp}">
+            <?audit suppress oracle.adf.faces.bindingWithoutRequestOrBackingBeanScope?>
+            <af:dialog id="d1" title="Remove Account" type="none">
+                <af:panelGroupLayout id="pgl37" partialTriggers="b2 b3">
+                    <af:outputText value="Are you sure want to remove the account?" id="ot24"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl38">
+
+                        <af:button text="OK" id="b2" actionListener="#{pageFlowScope.myAccountBean.removeAccountActionListener}" partialSubmit="true"/>
+                        <af:button text="Cancel" id="b3"
+                                   actionListener="#{pageFlowScope.myAccountBean.closeRemovePopUp}" partialSubmit="true"/>
+                    </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="editProfileImagePopup" contentDelivery="immediate"
+                  binding="#{pageFlowScope.myAccountBean.editPhotoPopupBind}">
+            <af:dialog id="d2" title="Edit Profile Photo" type="none" contentWidth="420" styleClass="dialog ">
+                <af:panelGroupLayout id="pgl14" styleClass="col-md-12 col-xs-12 smart-forms dialogcontent-top-box">
+                    <af:panelGroupLayout id="pgl15" styleClass="col-md-12 col-xs-12 pl-0 mb-4 mt-4" partialTriggers="b3">
+                        <section id="browseFile" class="d-inline-block">
+                            <af:inputFile label="" id="if12" simple="true"
+                                          binding="#{pageFlowScope.myAccountBean.uploadFileBind}"
+                                          autoSubmit="true"/>
+                            <af:outputText value="#{pageFlowScope.attachmentErrMsg}" id="ot28" partialTriggers="if12"
+                                           rendered="#{pageFlowScope.attachmentErrMsg ne null}" styleClass="error"/>
+                        </section>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl16" styleClass="mt-4">
+                        <af:button text="OK" id="b4" styleClass="button btn-primary mt-4"
+                                   actionListener="#{pageFlowScope.myAccountBean.closeProfilePicPopup}"
+                                   partialSubmit="true"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

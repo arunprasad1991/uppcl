@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1">
+         <af:panelGroupLayout id="pgl4">
+                        <af:panelGroupLayout id="pgl11" styleClass="d-inline-block">
+                         <af:panelGroupLayout id="pgl21" styleClass="col-lg-12 col-md-12 col-xs-12">
+                            <af:panelGroupLayout id="pgl8" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:outputText value="Name" styleClass="bold" id="ot9"/>
+                            </af:panelGroupLayout>
+                    
+                            <af:panelGroupLayout id="pgl9" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:outputText value="Billing Address" styleClass="bold" id="ot10"/>
+                            </af:panelGroupLayout>
+                    
+                            <af:panelGroupLayout id="pgl10" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:outputText value="Premises Address" styleClass="bold" id="ot11"/>
+                            </af:panelGroupLayout>
+                    
+                            <af:panelGroupLayout id="pgl13" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:outputText value="Sanctioned Load" styleClass="bold" id="ot12"/>
+                            </af:panelGroupLayout>                    
+                     </af:panelGroupLayout>
+                     
+                      <af:panelGroupLayout id="pgl22" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                        <af:panelGroupLayout id="pgl17" styleClass="col-lg-3 col-md-3 col-xs-12">
+                            <af:outputText value="#{pageFlowScope.myAccountBean.name}" id="ot13"/>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout id="pgl18" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:outputText value="#{pageFlowScope.myAccountBean.billingAddress}" id="ot14"/>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout id="pgl20" styleClass="col-lg-3 col-md-3 col-xs-12">
+                            <af:outputText value="#{pageFlowScope.myAccountBean.premisesAddress}" id="ot15"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl19" styleClass="col-lg-3 col-md-3 col-xs-12">
+                              <af:outputText value="#{pageFlowScope.myAccountBean.sanctionedLoad}" id="ot16"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>                       
+                    
+                </af:panelGroupLayout>
+               
+                <af:panelGroupLayout id="pgl12" styleClass="d-inline-block mt-10">
+                    <af:panelGroupLayout id="pgl23" styleClass="col-lg-12 col-md-12 col-xs-12">
+                            <af:panelGroupLayout id="pgl24" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                 <af:outputText value="Division" styleClass="bold" id="ot18"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl25" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                 <af:outputText value="Discom Name" styleClass="bold" id="ot17"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl26" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                 <af:outputText value="Sub Division" styleClass="bold" id="ot19"/>
+                            </af:panelGroupLayout>                            
+                            <af:panelGroupLayout id="pgl28" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                 <af:outputText value="Security Amount" styleClass="bold" id="ot25"/>
+                            </af:panelGroupLayout>
+                           
+                    </af:panelGroupLayout>
+                    
+                    <af:panelGroupLayout id="pgl29" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                            <af:panelGroupLayout id="pgl34" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                 <af:outputText value="#{pageFlowScope.myAccountBean.division}" id="ot22"/>
+                            </af:panelGroupLayout>
+                            
+                            <af:panelGroupLayout id="pgl33" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                 <af:outputText value="#{pageFlowScope.myAccountBean.discomName}" id="ot21"/>
+                            </af:panelGroupLayout>
+                            
+                            <af:panelGroupLayout id="pgl32" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                 <af:outputText value="#{pageFlowScope.myAccountBean.subDivision}" id="ot23"/>
+                            </af:panelGroupLayout> 
+                            
+                            <af:panelGroupLayout id="pgl30" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                   <af:outputText value="#{pageFlowScope.myAccountBean.securityAmount}" id="ot26"/>
+                            </af:panelGroupLayout>
+                    </af:panelGroupLayout>                  
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+  </af:panelGroupLayout>
+</jsp:root>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="MyAccountTF">
+    <template-reference>
+      <document>/WEB-INF/taskFlows/template/ExceptionHandlingTFTemplate.xml</document>
+      <id>ExceptionHandlingTFTemplate</id>
+    </template-reference>
+    <default-activity>AccountDetailsOnLoadTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>myAccountBean</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.MyAccountBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="myaccount">
+      <page>/WEB-INF/fragments/myaccount.jsff</page>
+    </view>
+    <method-call id="loadAccount">
+      <method>#{pageFlowScope.myAccountBean.loadAccount}</method>
+      <outcome>
+        <fixed-outcome>account</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="profileDetails">
+      <page>/WEB-INF/fragments/profileDetails.jsff</page>
+    </view>
+    <view id="billDetails">
+      <page>/WEB-INF/fragments/billDetails.jsff</page>
+    </view>
+    <view id="consumptionDetails">
+      <page>/WEB-INF/fragments/consumptionDetails.jsff</page>
+    </view>
+    <view id="manageAccounts">
+      <page>/WEB-INF/fragments/manageAccounts.jsff</page>
+    </view>
+    <view id="addAccount">
+      <page>/WEB-INF/fragments/addAccount.jsff</page>
+    </view>
+    <task-flow-call id="AccountDetailsOnLoadTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/common/AccountDetailsOnLoadTF.xml</document>
+        <id>AccountDetailsOnLoadTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="BillDeskTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskFlows/payment/BillDeskTF.xml</document>
+        <id>BillDeskTF</id>
+      </task-flow-reference>
+      <input-parameter id="__10">
+        <name>charges</name>
+        <value>#{pageFlowScope.payAmount}</value>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>accountDetails</name>
+        <value>#{sessionScope.accountsDetailsFromSession}</value>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>paymentFor</name>
+        <value>MyAccountBill</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>loadAccount</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>account</from-outcome>
+        <to-activity-id>myaccount</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>myaccount</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>reload</from-outcome>
+        <to-activity-id>loadAccount</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>manage</from-outcome>
+        <to-activity-id>manageAccounts</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>toPayment</from-outcome>
+        <to-activity-id>BillDeskTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>manageAccounts</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>return</from-outcome>
+        <to-activity-id>loadAccount</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>AccountDetailsOnLoadTF</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>continue</from-outcome>
+        <to-activity-id>loadAccount</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

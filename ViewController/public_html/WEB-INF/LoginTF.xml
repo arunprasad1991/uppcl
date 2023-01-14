@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="LoginTF">
+    <default-activity>login</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>login</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.Login</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name>forgetPassword</managed-bean-name>
+      <managed-bean-class>com.xx.uppcl.beans.ForgetPassword</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="login">
+      <page>/WEB-INF/fragments/login.jsff</page>
+    </view>
+    <view id="forgetPassword">
+      <page>/WEB-INF/fragments/forgetPassword.jsff</page>
+    </view>
+    <control-flow-rule id="__3">
+      <from-activity-id>login</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>forgot</from-outcome>
+        <to-activity-id>forgetPassword</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>forgetPassword</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>login</from-outcome>
+        <to-activity-id>login</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

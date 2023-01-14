@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Login.jspx" id="d1">
+            <af:form id="f1">
+                <af:resource type="javascript" source="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></af:resource>
+                <af:resource type="css" source="http://10.0.0.192/css/bootstrap/bootstrap.min.css"></af:resource>
+                <af:resource type="javascript" source="http://10.0.0.192/js/bootstrap/bootstrap.min.js"></af:resource>
+                <af:resource source="http://10.0.0.192/css/default.css" type="css"/>
+                <af:resource source="http://10.0.0.192/css/layouts.css" type="css"/>
+                <af:resource type="css" source="http://10.0.0.192/css/responsive-leyouts.css"/>
+                <af:resource type="css" source="http://10.0.0.192/css/font-awesome/css/font-awesome.min.css"/>
+                <af:resource type="css" source="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css"></af:resource>
+                <af:resource type="javascript" source="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/fontawesome.min.js"></af:resource>
+                <af:resource type="javascript" source="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/solid.min.js"></af:resource>
+                <af:resource type="css" source="http://10.0.0.192/css/Simple-Line-Icons-Webfont/simple-line-icons.css"/>
+                <af:resource type="css" source="http://10.0.0.192/css/colors/orange.css"/>
+                <af:resource type="css" source="http://10.0.0.192/css/colors/colors.css"/>
+                <af:resource type="css" source="http://10.0.0.192/js/owl-carousel/owl.carousel.css"></af:resource>
+                <af:resource type="css" source="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
+                <af:resource type="javascript" source="https://use.fontawesome.com/releases/v5.0.6/js/all.js"/>
+                <af:resource type="css" source="http://10.0.0.192/css/uppcl-test.css"></af:resource>
+                <af:panelGroupLayout id="pgl1">
+                    <af:region value="#{bindings.LoginTF1.regionModel}" id="r1"/>
+                </af:panelGroupLayout>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

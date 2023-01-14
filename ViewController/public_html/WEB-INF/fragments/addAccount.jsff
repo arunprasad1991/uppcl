@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:panelGroupLayout id="pgl1">
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="immediate"
+                  binding="#{pageFlowScope.myAccountBean.addAccountPopUp}">
+            <af:dialog id="d1" title="Add Account" type="none" contentWidth="400" styleClass="dialog">
+                <af:panelGroupLayout id="pgl37" partialTriggers="it1 l2 b1" styleClass="smart-forms">
+                    <af:panelGroupLayout id="pgl7" partialTriggers=""
+                                         rendered="#{!pageFlowScope.myAccountBean.addSuccessFlag}">
+                        <af:panelGroupLayout id="pgl27" styleClass="d-block mt-4 relative">
+                            <i class="fa fa-user fieldicon"></i>
+                            <af:inputText placeholder="Enter Account Number" id="it1" simple="true" autoSubmit="true"
+                                          value="#{pageFlowScope.myAccountBean.addAccountNo}"
+                                          valueChangeListener="#{pageFlowScope.myAccountBean.addAccountNoValueChange}"/>
+                            <af:panelGroupLayout id="pgl22"
+                                                 rendered="#{pageFlowScope.myAccountBean.addAccValidationFlag}">
+                                <i class="fa-solid fa-circle-check tickicon"></i>
+                            </af:panelGroupLayout>
+                            <af:link text="Validate" shortDesc="Validate Account No" id="l2"
+                                     rendered="#{!pageFlowScope.myAccountBean.addAccValidationFlag}"
+                                     actionListener="#{pageFlowScope.myAccountBean.validateAccountNo}"
+                                     styleClass="validatelink"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl35"
+                                             rendered="#{pageFlowScope.myAccountBean.addAccValidationMsg ne null}">
+                            <af:outputText value="#{pageFlowScope.myAccountBean.addAccValidationMsg}" styleClass="error"
+                                           id="ot20"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl5" styleClass="d-block mt-4 relative" partialTriggers="l2" rendered="#{pageFlowScope.myAccountBean.addAccValidationFlag}">
+                            <i class="fa fa-mobile fieldicon"></i>
+                            <af:inputText placeholder="Mobile No" id="it3"
+                                          value="#{pageFlowScope.myAccountBean.addMobileNo}" simple="true"
+                                          maximumLength="10" disabled="#{pageFlowScope.myAccountBean.addMobileNo != null}"
+                                          styleClass="#{pageFlowScope.myAccountBean.addMobileValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}">
+                                
+                            </af:inputText>
+                            <af:panelGroupLayout id="pgl2"
+                                                 rendered="#{pageFlowScope.myAccountBean.addMobileValidationFlag}">
+                                <i class="fa-solid fa-circle-check tickicon"></i>
+                            </af:panelGroupLayout>
+                            <af:link text="Generate Mobile OTP" shortDesc="Generate Mobile OTP" id="l1"
+                                     rendered="#{!pageFlowScope.myAccountBean.addMobileValidationFlag}"
+                                     actionListener="#{pageFlowScope.myAccountBean.validateMobileNo}"
+                                     styleClass="validatelink"/>
+                            <af:outputText value="#{pageFlowScope.myAccountBean.addMobileValidationMsg}" styleClass="error"
+                                           rendered="#{pageFlowScope.myAccountBean.addMobileValidationMsg ne null}"
+                                           id="ot2"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pg22" styleClass="d-block mt-4 relative"
+                                             rendered="#{pageFlowScope.myAccountBean.addMobileOTP ne null and !pageFlowScope.myAccountBean.addMobileValidationFlag}">
+                            <i class="fa fa-mobile fieldicon"></i>
+                            <af:inputText placeholder="Enter OTP for mobile" id="it8" simple="true"
+                                          styleClass="#{pageFlowScope.myAccountBean.addMobileOTPValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.myAccountBean.enteredMobileOTP}"/>
+                            <af:link text="Verify OTP" shortDesc="Verify OTP" id="l3"
+                                     actionListener="#{pageFlowScope.myAccountBean.verifyMobileOTP}"
+                                     styleClass="validatelink"/>
+                            <af:outputText value="#{pageFlowScope.myAccountBean.addMobileOTPValidationMsg}"
+                                           rendered="#{pageFlowScope.myAccountBean.addMobileOTPValidationMsg ne null}"
+                                           styleClass="error" id="ot3"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl6" styleClass="d-block mt-4 relative" partialTriggers="l2" rendered="#{pageFlowScope.myAccountBean.addAccValidationFlag}">
+                            <i class="fa fa-envelope fieldicon"></i>
+                            <af:inputText placeholder="Email" id="it4" value="#{pageFlowScope.myAccountBean.addEmail}"
+                                          simple="true"
+                                          disabled="#{pageFlowScope.myAccountBean.addEmail != null}">
+                            </af:inputText>
+                            <af:panelGroupLayout id="pgl24"
+                                                 rendered="#{pageFlowScope.myAccountBean.addEmailValidationFlag}">
+                                <i class="fa-solid fa-circle-check tickicon"></i>
+                            </af:panelGroupLayout>
+                            <af:link text="Generate Email OTP" shortDesc="Generate Email OTP" id="l5"
+                                     rendered="#{!pageFlowScope.myAccountBean.addEmailValidationFlag}"
+                                     actionListener="#{pageFlowScope.myAccountBean.validateEmail}"
+                                     styleClass="validatelink"/>
+                            <af:outputText value="#{pageFlowScope.myAccountBean.addEmailValidationMsg}" styleClass="error"
+                                           rendered="#{pageFlowScope.myAccountBean.addEmailValidationMsg ne null}"
+                                           id="ot8"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pg23" styleClass="d-block mt-4 relative"
+                                             rendered="#{pageFlowScope.myAccountBean.addEmailOTP ne null and !pageFlowScope.myAccountBean.addEmailValidationFlag}">
+                            <i class="fa fa-envelope fieldicon"></i>
+                            <af:inputText placeholder="Enter OTP for email" id="it7" simple="true"
+                                          styleClass="#{pageFlowScope.myAccountBean.addEmailOTPValidationMsg ne null?'mandate d-inline-block site_wrapper':'site_wrapper d-inline-block'}"
+                                          value="#{pageFlowScope.myAccountBean.enteredEmailOTP}"/>
+                            <af:link text="Verify OTP" shortDesc="Verify OTP" id="l4"
+                                     actionListener="#{pageFlowScope.myAccountBean.verifyEmailOTP}"
+                                     styleClass="validatelink"/>
+                            <af:outputText value="#{pageFlowScope.myAccountBean.addEmailOTPValidationMsg}"
+                                           styleClass="error"
+                                           rendered="#{pageFlowScope.myAccountBean.addEmailOTPValidationMsg ne null}"
+                                           id="ot4"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl31" styleClass="d-block mt-4">
+                            <af:button text="Add" id="b1" styleClass="button btn-primary"
+                                       actionListener="#{pageFlowScope.myAccountBean.addAccount}" partialSubmit="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl38" rendered="#{pageFlowScope.myAccountBean.addSuccessFlag}">
+                        <af:outputText value="Account added successfully" styleClass="d-block font16 mt-2" id="ot24"/>
+                        <af:button text="OK" id="b2" styleClass="button btn-primary mt-4"
+                                   actionListener="#{pageFlowScope.myAccountBean.closeAddPopUp}" partialSubmit="true"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+    </af:panelGroupLayout>
+</jsp:root>

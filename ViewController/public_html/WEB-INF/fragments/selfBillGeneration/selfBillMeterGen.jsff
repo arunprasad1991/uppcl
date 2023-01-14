@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1">
+        <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout id="pgl83" styleClass="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            Self Bill Generation
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl93" styleClass="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                    <div class="account-user-text">
+                        <af:outputText value="Welcome : " id="ot2" inlineStyle="color: orange !important;"
+                                       styleClass="d-inline-block fontsize20"/>
+                         
+                        <af:outputText value="#{sessionScope.loggedInUserName}" id="ot18"
+                                       inlineStyle="color: White !important;"
+                                       styleClass="white d-inline-block fontsize22 pl-4"/>
+                         
+                        <br/>
+                         
+                        <af:outputText value="Last Login  : " styleClass="d-inline-block" id="ot1"/>
+                         
+                        <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="pl-4 white d-inline-block" id="ot6"/>
+                    </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="selfBill">
+            <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back mb-2 "
+                                 id="pgl6">
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-block static wrap-3 pl-0 grey-background"
+                                     id="pgl30">
+                    <af:panelGroupLayout id="pgl7" styleClass="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                        <af:panelGroupLayout id="pgl25" styleClass="d-block mt-4 relative fontsize20 mb-2">
+                            <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_CUSTOMER_DETAILS')}" styleClass="bold" id="ot9"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 font14" id="pgl31">
+                    <af:panelGroupLayout id="pgl11">
+                        <af:panelGroupLayout id="pgl21" styleClass="col-lg-12 col-md-12 col-xs-12">
+                            <af:panelGroupLayout id="pgl8" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl29" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('NAME')}" styleClass="bold" id="ot28"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl15" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.name}" id="ot13"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl9" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl16" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('ADDRESS')}" styleClass="bold" id="ot10"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl17" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.address}" id="ot14"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl10" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl18" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_DISCOM_NAME_LABEL')}" styleClass="bold" id="ot11"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl19" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.discom}" id="ot15"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl3" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl20" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_EMAIL_LABEL')}" styleClass="bold" id="ot12"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl22" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.email}" id="ot16"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout id="pgl35" styleClass="col-lg-12 col-md-12 col-xs-12 mt-4">
+                            <af:panelGroupLayout id="pgl2" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl27" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('PHN_NO')}" styleClass="bold" id="ot3"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl28" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.mobileNo}" id="ot21"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl4" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl32" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SUPPLY_TYPE')}" styleClass="bold" id="ot7"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl33" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.supplyType}" id="ot22"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl12" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                 <af:panelGroupLayout id="pgl34" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_DIVISION_LABEL')}" styleClass="bold" id="ot8"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl52" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.division}" id="ot23"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl14" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl53" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_SECURITY_AMOUNT')}" styleClass="bold" id="ot17"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl54" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.securityAmount}" id="ot24"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout id="pgl5" styleClass="col-lg-12 col-md-12 col-xs-12 mt-4">
+                            <af:panelGroupLayout id="pgl23" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl55" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_SANC_LOAD_LABEL')}" styleClass="bold" id="ot4"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl56" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.currentLoad}" id="ot20"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl24" styleClass="col-lg-3 col-md-3 col-xs-12">
+                                <af:panelGroupLayout id="pgl57" styleClass="col-lg-12 col-md-12 col-xs-12">
+                                    <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_METER_NUM_LABEL')}" styleClass="bold" id="ot5"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl58" styleClass="col-lg-12 col-md-12 col-xs-12 mt-2">
+                                    <af:outputText value="#{pageFlowScope.accountsDetails.meterNum}" id="ot19"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="catChangeReq">
+            <af:panelGroupLayout styleClass="mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back mb-2"
+                                 id="pgl36" partialTriggers="b1">
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-block static wrap-3 pl-0 grey-background"
+                                     id="pgl26">
+                    <af:panelGroupLayout id="pgl42" styleClass="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                        <af:panelGroupLayout id="pgl43" styleClass="d-block mt-4 relative fontsize20 mb-2">
+                            <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_TEXT')}" styleClass="bold" id="ot27"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 smart-forms smart-container static mt-4" id="pgl41"
+                                     partialTriggers="b1" rendered="#{pageFlowScope.meterBusErrMsg ne null}">
+                    <i class='fas fa-exclamation-circle' style='font-size:24px;color:red'></i>
+                    <af:outputText value="#{pageFlowScope.meterBusErrMsg}"
+                                       id="ot34" styleClass="error mt-2 fontsize20 ml-2"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 smart-forms smart-container static"
+                                     id="pgl46">
+                    <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-sm-4 col-xs-4 d-block  wrap-3 mt-4"
+                                         id="pgl47">
+                        <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_METER_READ_LABEL')}" id="ot29"/>
+                        <af:panelGroupLayout id="pgl48" styleClass="d-block relative">
+                            <i class="fa fa-meter fieldicon"></i>
+                            <af:inputText id="it4" value="#{pageFlowScope.userEntryBillDetails.userEntMeterReading}" simple="true" autoSubmit="true"
+                                          styleClass="#{pageFlowScope.meterReadErrMsg ne null ? 'mandate' : ''}"/>
+                            <af:outputText value="#{pageFlowScope.meterReadErrMsg}" id="ot30"
+                                           rendered="#{pageFlowScope.meterReadErrMsg ne null}" styleClass="error"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-sm-4 col-xs-4 d-block wrap-3 mt-4"
+                                         id="pgl44">
+                        <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_DEMAND_LABEL')}" id="ot25"/>
+                        <af:panelGroupLayout id="pgl49" styleClass="d-block relative">
+                            <i class="fa fa-meter fieldicon"></i>
+                            <af:inputText id="it2" value="#{pageFlowScope.userEntryBillDetails.userEntDemand}" simple="true" autoSubmit="true"
+                                          styleClass="#{pageFlowScope.demandErrMsg ne null ? 'mandate' : ''}"/>
+                            <af:outputText value="#{pageFlowScope.demandErrMsg}" id="ot31"
+                                           rendered="#{pageFlowScope.demandErrMsg ne null}" styleClass="error"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 smart-forms smart-container static" id="pgl39">
+                    <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-sm-4 col-xs-4 d-block wrap-3 mt-4"
+                                         id="pgl40">
+                        <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_COMMENTS_LABEL')}" id="ot32"/>
+                        <af:panelGroupLayout id="pgl50" styleClass="d-block relative">
+                            <i class="fa fa-comments fieldicon"></i>
+                            <af:inputText id="it11" placeholder="Comments" rows="5" value="#{pageFlowScope.userEntryBillDetails.remarks}"
+                                          maximumLength="300" simple="true" autoSubmit="true"
+                                          styleClass="#{pageFlowScope.reasonErrMsg ne null ? 'mandate' : ''}"/>
+                            <af:outputText value="#{pageFlowScope.reasonErrMsg}" id="ot33"
+                                           rendered="#{pageFlowScope.reasonErrMsg ne null}" styleClass="error"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-lg-4 col-md-4 col-sm-4 col-xs-4 d-block wrap-3 mt-4"
+                                         id="pgl45">
+                        <af:panelGroupLayout id="pgl38" styleClass="d-block relative mt-4">
+                            <af:button text="#{backingBeanScope.selfBillGenerationBean.findLabel('SUBMIT')}" id="b1" styleClass="button btn-primary"
+                                           action="#{backingBeanScope.selfBillGenerationBean.submitMeterDetails}"/>
+                            <!--<af:outputText value="#{pageFlowScope.meterBusErrMsg}" id="ot26"
+                                               rendered="#{pageFlowScope.meterBusErrMsg ne null}" styleClass="error d-block"/>-->
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                     
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 smart-forms smart-container mt-4"
+                                     id="pgl51">
+                      <af:outputText value="#{backingBeanScope.selfBillGenerationBean.findLabel('SBG_FOOTER_TEXT_MSG')}"
+                                       id="ot35" styleClass="error mt-2 fontsize20"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+    </af:panelGroupLayout>
+</jsp:root>

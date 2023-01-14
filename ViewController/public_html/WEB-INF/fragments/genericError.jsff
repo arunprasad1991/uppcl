@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1">
+        <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgl13">
+                <af:panelGroupLayout id="pgl83" styleClass="col-lg-8 col-md-8 col-xs-12">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            ${pageFlowScope.headerName}
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl93" styleClass="col-lg-4 col-md-4 col-xs-12">
+                            <div class="account-user-text">
+                                <af:outputText value="Welcome : " id="ot2" inlineStyle="color: orange !important;"  styleClass="d-inline-block fontsize20"/>
+                                <af:outputText value="#{sessionScope.loggedInUserName}" id="ot18" inlineStyle="color: White !important;"  styleClass="white d-inline-block fontsize22 pl-4"/>
+                                <br/>
+                                <af:outputText value="Last Login  : " styleClass="d-inline-block" id="ot1"/>
+                                <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="pl-4 white d-inline-block" id="ot6"/>
+                                
+                            </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-block" id="confirmation">
+            <af:panelGroupLayout styleClass="col-lg-12 col-md-12 col-sm-12 col-xs-12 boxshadow white-back mb-2 text-center smart-forms smart-container static" id="pgl30">
+                <af:panelGroupLayout id="pgl7" styleClass="d-block mt-4 relative">
+                     <i class='fas fa-exclamation-circle' style='font-size:48px;color:red'></i>
+                    <af:outputText value="Something went wrong. Please try again after sometime." id="ot3" styleClass="fontsize28 mt-4 pt-4 d-block error"/>
+                </af:panelGroupLayout>
+                
+            </af:panelGroupLayout>
+        </section>
+       
+    </af:panelGroupLayout>
+</jsp:root>

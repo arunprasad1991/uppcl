@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Created-By: Oracle Corporation
+Specification-Version: 1.0.0
+Implementation-Version: 1.0.0.19
+Implementation-Verndor: Oracle
+Implementation-Title: uppcl.adf.app
+Extension-Name: extend.portal.uppcl.adf.app

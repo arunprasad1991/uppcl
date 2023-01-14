@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1">
+  <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgtl13">
+                <af:panelGroupLayout id="pgtl83" styleClass="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgtl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            Update Profile
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgtl93" styleClass="col-lg-4 col-md-4 col-xs-4 col-sm-4"
+                                     rendered="#{sessionScope.loggedInUserName != null}">
+                    <div class="account-user-text">
+                        <af:outputText value="Welcome : " id="ott2" inlineStyle="color: orange !important;"
+                                       styleClass="d-inline-block fontsize20"/>
+                         
+                        <af:outputText value="#{sessionScope.loggedInUserName}" id="ott18"
+                                       inlineStyle="color: White !important;"
+                                       styleClass="white d-inline-block fontsize22 pl-4"/>
+                         
+                        <br/>
+                         
+                        <af:outputText value="Registered Date  : " styleClass="d-inline-block" id="ott1"/>
+                         
+                        <af:outputText value="#{sessionScope.lastRegisterTime}" styleClass="pl-4 white d-inline-block"
+                                       id="ott6"/>
+                    </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+    <section class="width100 middle_outer sec-padding grey-background d-inline-block">
+    <af:panelGroupLayout id="pgl2" partialTriggers="b1" styleClass="updateprofile-outer d-block smart-forms smart-container wrap-3">
+      <af:panelGroupLayout styleClass="section d-block text-center" id="pgl29">                             
+            <af:outputText value="Update Profile" id="ot13"
+                       styleClass="dark-blue login-header site_wrapper"/>
+        </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl3" styleClass="section d-block mt-4">
+        <i class="fa fa-user fieldicon"></i>
+        <af:inputText placeholder="Name" id="it1" value="#{pageFlowScope.updateProfile.name}"  simple="true" disabled="true"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl4" styleClass="section d-block mt-4 addressfield">
+        <i class="far fa-sticky-note fieldicon"></i>
+        <af:outputText value="#{pageFlowScope.updateProfile.address}" id="it2"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl5" styleClass="section d-block mt-4">
+        <i class="fa fa-mobile fieldicon"></i>
+        <af:inputText placeholder="Mobile Number" id="it3" value="#{pageFlowScope.updateProfile.mobileNo}" simple="true"/>
+        <af:outputText value="#{pageFlowScope.updateProfile.mobileNoValidationMsg}" styleClass="error" id="ot1"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl6" styleClass="section d-block mt-4">
+        <i class="fa fa-envelope fieldicon"></i>
+        <af:inputText placeholder="Email" id="it4" value="#{pageFlowScope.updateProfile.email}"  simple="true"/>
+        <af:outputText value="#{pageFlowScope.updateProfile.emailValidationMsg}" styleClass="error" id="ot2"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl7" styleClass="section d-block mt-4">
+        <af:button text="Update" id="b1" action="#{pageFlowScope.updateProfile.updateProfileAction}" styleClass="button btn-primary pt-2" partialSubmit="true"/>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    </section>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2" contentDelivery="immediate"
+              binding="#{pageFlowScope.updateProfile.updateProfilePopUp}">
+      <af:dialog id="d2" title="Update Profile" type="none" contentWidth="400" styleClass="dialog ">
+        <af:panelGroupLayout id="pgl39" styleClass="col-md-12 col-xs-12 smart-forms dialogcontent-top-box">
+          <af:panelGroupLayout id="pgl42" styleClass="col-md-12 col-xs-12 pl-0 mb-4 mt-4">
+            <af:panelGroupLayout id="pgl40">
+              <af:outputText value="Profile Updated Successfully." id="ot22" styleClass="fontsize18"/>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+          <af:panelGroupLayout id="pgl41" styleClass="mt-4">
+            <af:button text="OK" id="b2" styleClass="button btn-primary mt-4"
+                       actionListener="#{pageFlowScope.updateProfile.okActionListener}"/>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

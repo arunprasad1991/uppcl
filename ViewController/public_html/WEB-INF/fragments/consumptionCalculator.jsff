@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:panelGroupLayout id="pgl1">
+        <section class="middle_outer login-back5 d-block">
+            <af:panelGroupLayout styleClass="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pgtl13">
+                <af:panelGroupLayout id="pgtl83" styleClass="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <af:panelGroupLayout styleClass="pagenation_links1 d-block mt-7" id="pgtl37">
+                        <h7 class="text-shadow">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            Consumption Calculator
+                        </h7>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgtl93" styleClass="col-lg-4 col-md-4 col-xs-4 col-sm-4"
+                                     rendered="#{sessionScope.loggedInUserName != null}">
+                    <div class="account-user-text">
+                        <af:outputText value="Welcome : " id="ott2" inlineStyle="color: orange !important;"
+                                       styleClass="d-inline-block fontsize20"/>
+                         
+                        <af:outputText value="#{sessionScope.loggedInUserName}" id="ott18"
+                                       inlineStyle="color: White !important;"
+                                       styleClass="white d-inline-block fontsize22 pl-4"/>
+                         
+                        <br/>
+                         
+                        <af:outputText value="Last Login  : " styleClass="d-inline-block" id="ott1"/>
+                         
+                        <af:outputText value="#{sessionScope.lastLoginTime}" styleClass="pl-4 white d-inline-block"
+                                       id="ott6"/>
+                    </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+        <section class="middle_outer sec-padding d-inline-block width100">
+            <af:panelGroupLayout id="pgl3" styleClass="col-lg-12 col-md-12 col-xs-12 boxshadow">
+                <af:panelGroupLayout id="pgl15" styleClass="col-lg-12 col-md-12 col-xs-12 pl-0 pr-0">
+                    <af:panelGroupLayout id="pgl14" styleClass="col-lg-8 col-md-7 col-xs-12 mt-4 pl-2">
+                        <af:panelGroupLayout id="pgl12" styleClass="col-lg-12 col-md-12 col-xs-12 pl-0 pr-0">
+                            <af:panelGroupLayout id="pgl2" styleClass="col-lg-8 col-md-7 col-xs-12 pl-2">
+                                <af:panelGroupLayout id="pgl13" partialTriggers="b1 l1"
+                                                     styleClass="col-lg-12 col-md-12 col-xs-12 pl-0 pr-0"
+                                                     rendered="#{pageFlowScope.dataSize gt 0}">
+                                    <dvt:pieChart id="chart1" value="#{pageFlowScope.data}" var="row"
+                                                  hoverBehavior="dim" sliceGaps="1"
+                                                  inlineStyle="height:350px;width:600px" emptyText=" "
+                                                  sliceLabelPosition="inside" innerRadius="0.6">
+                                        <dvt:chartLegend id="leg1" rendered="true" scrolling="asNeeded"/>
+                                        <dvt:pieDataItem label="#{row.series}" value="#{row.value}" borderWidth="1"
+                                                         borderColor="white"/>
+                                    </dvt:pieChart>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl16" styleClass="col-lg-12 col-md-12 col-xs-12 pl-0 pr-0">
+                            <table id="myTable" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Appliances</th>
+                                        <th>Watt</th>
+                                        <th>No. Of Equipments</th>
+                                        <th>Hour Use/Day</th>
+                                        <th>Days Use/Month</th>
+                                        <th>Total Load</th>
+                                        <th>Total Consumption in KWH (Units)</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                 
+                                <tbody>
+                                    <af:forEach items="#{pageFlowScope.ConsumptionCalculator.calcList}" var="current"
+                                                varStatus="vs">
+                                        <tr>
+                                            <td>
+                                                <af:outputText value="#{current.appliances}" id="ot1"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{current.watt}" id="ot2"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{current.noOfEquip}" id="ot3"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{current.hoursUse}" id="ot4"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{current.daysUse}" id="ot5"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{current.totalLoad}" id="ot6"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{current.totalConsumption}" id="ot8"/>
+                                            </td>
+                                            <td>
+                                                <af:link text="Delete" id="l1" immediate="true"
+                                                         actionListener="#{pageFlowScope.ConsumptionCalculator.deleteCurrentRecord}">
+                                                    <f:setPropertyActionListener target="#{pageFlowScope.deleteID}"
+                                                                                 value="#{vs.index}"/>
+                                                </af:link>
+                                            </td>
+                                        </tr>
+                                    </af:forEach>
+                                    <tr>
+                                        <td colspan="6" style="text-align:right; height:40px;">
+                                            <af:outputText value="Total Load: " id="ot7"/>
+                                             
+                                            <af:outputText value="#{pageFlowScope.ConsumptionCalculator.sumTotalLoad}"
+                                                           id="ot10" styleClass="font-medium ml-1"/>
+                                        </td>
+                                        <td colspan="2" style="height:50px;">
+                                            <af:outputText value="Total Consumption in KWH (Units): " id="ot9"/>
+                                             
+                                            <af:outputText value="#{pageFlowScope.ConsumptionCalculator.sumTotalConsumption}"
+                                                           id="ot11" styleClass="font-medium ml-1"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl11" styleClass="col-lg-4 col-md-4 col-xs-12 pl-2 text-center">
+                        <af:panelGroupLayout id="pgl4"
+                                             styleClass="col-lg-12 col-md-12 col-xs-12 pl-0 pr-0 smart-forms static cons-calclator mb-6">
+                            <af:panelGroupLayout id="pgl5" styleClass="d-block mt-4 relative">
+                                <i class="fa fa-list-alt fieldicon"></i>
+                                <af:selectOneChoice id="soc2" value="#{pageFlowScope.ConsumptionCalculator.appliances}"
+                                                    autoSubmit="true"
+                                                    valueChangeListener="#{pageFlowScope.ConsumptionCalculator.onSelectAppliances}"
+                                                    required="false" unselectedLabel="Select Appliances" simple="true">
+                                    <f:selectItems value="#{pageFlowScope.ConsumptionCalculator.equipmentsList}"
+                                                   id="si5"/>
+                                </af:selectOneChoice>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl6" styleClass="d-block mt-3 relative">
+                                <i class="fa fa-bolt fieldicon"></i>
+                                <af:selectOneChoice id="soc1" partialTriggers="soc2"
+                                                    value="#{pageFlowScope.ConsumptionCalculator.watt}" required="false"
+                                                    unselectedLabel="Select Watt" simple="true">
+                                    <f:selectItems value="#{pageFlowScope.ConsumptionCalculator.wattageList}" id="si1"/>
+                                </af:selectOneChoice>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl7" styleClass="d-block mt-3 relative">
+                                <i class="fas fa-sort-numeric-up fieldicon"></i>
+                                <af:inputText id="it3" value="#{pageFlowScope.ConsumptionCalculator.equipments}"
+                                              required="false" placeholder="No Of Equipments" simple="true">
+                                    <af:convertNumber/>
+                                    <af:validateLongRange minimum="1" maximum="20"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl8" styleClass="d-block mt-3 relative">
+                                <i class="far fa-clock fieldicon"></i>
+                                <af:inputText id="it1" value="#{pageFlowScope.ConsumptionCalculator.hoursUse}"
+                                              required="false" placeholder="Hour Use/Day" simple="true">
+                                    <af:convertNumber/>
+                                    <af:validateLongRange minimum="1" maximum="24"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl9" styleClass="d-block mt-3 relative">
+                                <i class="far fa-clock fieldicon"></i>
+                                <af:inputText id="it2" value="#{pageFlowScope.ConsumptionCalculator.daysUse}"
+                                              required="false" placeholder="Days Use/Month" simple="true">
+                                    <af:convertNumber/>
+                                    <af:validateLongRange minimum="1" maximum="31"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl10" styleClass="d-block mt-4">
+                                <af:button text="Add" styleClass="button btn-primary" id="b1"
+                                           actionListener="#{pageFlowScope.ConsumptionCalculator.onClickAdd}"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </section>
+    </af:panelGroupLayout>
+</jsp:root>
